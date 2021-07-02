@@ -1,0 +1,22 @@
+{
+  "name": "portfolio-2021",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "core-js": "^3.15.1",
+    "nuxt": "^2.15.7"
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^8.3.0",
+    "prettier": "^2.3.2",
+    "sass": "^1.32.8",
+    "sass-loader": "^10.1.1",
+    "scrollmagic": "^2.0.8"
+  }
+}
