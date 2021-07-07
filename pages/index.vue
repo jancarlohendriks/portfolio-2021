@@ -1,15 +1,10 @@
 <template>
   <div class="with-header position-relative" data-spy="scroll" data-target="#sections-nav" data-offset="80" :class="menuOpen ? 'sections-nav-in' : null">
-    <header class="header">
+    
+		<header class="header">
       <div class="container-fluid-limited d-flex align-items-center justify-content-between">
         <a href="index.html" class="header-brand">
 					<!-- Jan Carlo -->
-          <!-- <img
-            src="assets/img/logo_b.svg"
-            data-light-src="assets/img/logo.svg"
-            data-dark-src="assets/img/logo_b.svg"
-            alt="Your logo"
-          /> -->
         </a>
         <button
 					@click="menuOpen = !menuOpen"
@@ -22,7 +17,8 @@
         </button>
       </div>
     </header>
-    <nav class="sections-nav-container">
+    
+		<nav class="sections-nav-container">
       <ul id="sections-nav" class="nav sections-nav sections-nav-animated">
         <li
 					v-for="(section, index) in sections"
@@ -42,12 +38,12 @@
 				</li>
       </ul>
     </nav>
-    <main class="content">
+    
+		<main class="content">
       <div class="container-fluid-limited">
         <div class="row">
           <div id="sections" ref="sections" class="col col-xl-9">
-						<!-- <Section id="Top"> -->
-						<Section id="Top" v-on-screen>
+						<!-- <Section id="Top" v-on-screen>
 							<div class="jumbotron jumbotron-fluid pt-6 pt-lg-8 pb-0 mb-0">
 								<img
 									src="assets/img/avatar.png"
@@ -65,10 +61,8 @@
 								<p class="lead animation-translate animation-item-3">
 									FREELANCE WEBDEVELOPER
 								</p>
-								<!-- <nuxt-content :document="hero" /> -->
 							</div>
 						</Section>
-						<!-- <Section id="About"> -->
 						<Section id="About" v-on-screen>
 							<div class="row">
 								<div class="col col-xl-10">
@@ -106,14 +100,17 @@
 									</article>
 								</div>
 							</div>
-						</Section>
-            <!-- <Hero id="Top"/>
-            <About id="About"/>
-            <Skills id="Skills"/>
-            <Facts id="Facts"/>
-            <Experiences id="Experiences"/>
-            <Projects id="Projects"/>
-            <Contact id="Contact"/> -->
+						</Section> -->
+            <!-- <div>
+							{{ content }}
+						</div> -->
+						<Hero :content="content.filter(c => c.slug == 'hero')"></Hero>
+            <!-- <About id="About"/> -->
+            <!-- <Skills id="Skills"/> -->
+            <!-- <Facts id="Facts"/> -->
+            <!-- <Experiences id="Experiences"/> -->
+            <!-- <Projects id="Projects"/> -->
+            <!-- <Contact id="Contact"/> -->
           </div>
         </div>
       </div>
@@ -128,7 +125,7 @@
 
 <script>
 // import ScrollMagic from 'scrollmagic'
-// import Hero from '../components/sections/Hero.vue'
+import Hero from '../components/sections/Hero.vue'
 // import About from '../components/sections/About.vue'
 // import Contact from '../components/sections/Contact.vue'
 // import Experiences from '../components/sections/Experiences.vue'
@@ -136,14 +133,9 @@
 // import Projects from '../components/sections/Projects.vue'
 // import Skills from '../components/sections/Skills.vue'
 
-// import { mapMutations } from 'vuex'
-
-// if (!window.ScrollControler)
-//   window.ScrollControler = new ScrollMagic.Controller()
-
 export default {
 	components: {
-		// Hero,
+		Hero,
 		// About,
 		// Contact,
 		// Experiences,
@@ -168,12 +160,19 @@ export default {
 		})
 	},
 
-	async beforeMount() {
-		const content = await this.$content()
+	async asyncData({ $content, params }) {
+		const content = await $content()
 			.sortBy('createdAt', 'desc')
 			.fetch()
-		console.log(content);
+		return { content }
 	}
+
+	// async asyncData({ $content, params }) {
+  //   const content = await $content('', '').fetch()
+	// 	console.log(content);
+
+  //   return { content }
+  // }
 
 
 	// CONTENT
@@ -185,41 +184,5 @@ export default {
   //   return { hero, index }
   // }
 
-
-
-	// updated() {
-	// 	this.sections = this.$refs.sections.children
-	// 	console.log(this.sections);
-	// },
-	
-	// mounted() {
-		
-	// 	this.sections = this.$refs.sections.children
-	// 	// this.$nextTick(() => {
-	// 		// this.sections = this.$refs.sections.children
-	// 		// console.log(this.sections);
-			
-	// 		for (const section in this.sections) {
-	// 			if (Object.hasOwnProperty.call(this.sections, section)) {
-	// 				const element = this.sections[section];
-					
-	// 				element.scrollScene = new ScrollMagic.Scene({
-	// 					triggerHook: 0.9,
-	// 					triggerElement: element,
-	// 					reverse: true
-	// 				})
-	// 					.setClassToggle(element, 'interaction-in')
-	// 					.addTo(window.ScrollControler)
-	// 					.on('enter', () => {
-	// 						this.selected = Array.from(this.sections).indexOf(element)
-	// 					})
-	// 					.on('leave', () => {
-	// 						this.selected = Array.from(this.sections).indexOf(element) - 1
-	// 					})
-	// 			}
-	// 		}
-	// 	// })
-
-	// }
 }
 </script>
