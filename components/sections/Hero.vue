@@ -1,11 +1,13 @@
 <template>
-  <div>
-    <p>
-      {{ content.slug }}
-    </p>
-    <p>
-      {{ content.createdAt }}
-    </p>
+  <div class="section" :id="content.id">
+    <div class="section-body">
+      <h2>
+        {{ content.title }}
+      </h2>
+      <div>
+        {{ content.text }}
+      </div>
+    </div>
   </div>
 </template>
 
@@ -19,3 +21,10 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.section.interaction-in {
+  color: red;
+	transition: all ease-in-out .3s;
+}
+</style>
