@@ -1,13 +1,21 @@
 <template>
-	<p>
-		{{ content }}
-	</p>
+  <div>
+    <p>
+      {{ content.slug }}
+    </p>
+    <p>
+      {{ content.createdAt }}
+    </p>
+  </div>
 </template>
 
 <script>
 export default {
-	props: [
-		'content'
-	],
+  props: ['content'],
+  data() {
+    return {
+      content: this.content,
+    }
+  },
 }
 </script>

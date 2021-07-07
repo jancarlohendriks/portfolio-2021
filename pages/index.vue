@@ -104,7 +104,7 @@
             <!-- <div>
 							{{ content }}
 						</div> -->
-						<Hero :content="content.filter(c => c.slug == 'hero')"></Hero>
+						<Hero :content="content.filter(c => c.slug == 'index')[0]"></Hero>
             <!-- <About id="About"/> -->
             <!-- <Skills id="Skills"/> -->
             <!-- <Facts id="Facts"/> -->
