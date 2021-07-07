@@ -4,29 +4,40 @@ import Vue from 'vue'
 if (!window.ScrollControler)
   window.ScrollControler = new ScrollMagic.Controller()
 
-let selected
-let sections
-
 Vue.directive('on-screen', {
 	bind(el, binding, vnode){
-		selected = vnode.context._data.selected
-		sections = vnode.context._data.sections
+		const sections = vnode.context.$refs.sections.children
+		vnode.context.$emit('sections', sections)
+		// console.log(vnode.context._data.selected)
+		// selected = vnode.context._data.selected
+		// sections = vnode.context._data.sections
   },
-  inserted(element, vnode) {
-    // element.classList.add('v-on-screen');
-    element.scrollScene = new ScrollMagic.Scene({
+  inserted(el, biding, vnode) {
+		
+		const sections = vnode.context.$refs.sections.children
+		// console.log(vnode.context.$options);
+
+    el.scrollScene = new ScrollMagic.Scene({
       triggerHook: 0.5,
-      triggerElement: element,
+      triggerel: el,
+			reverse: true
     })
-      .setClassToggle(element, 'interaction-in')
+      .setClassToggle(el, 'interaction-in')
       .addTo(window.ScrollControler)
 			.on('enter', () => {
-				console.log(selected);
-				// element.index
-				// vnode.context._data.selected = 3
+				console.log('entering');
+				// Array.from(sections).indexOf(el)
+				vnode.context.$emit('selected', el)
+				// console.log(vnode);
+				// this.$parent.selected = Array.from(sections).indexOf(el)
+			})
+			.on('leave', () => {
+				console.log('leaving');
+				// vnode.context.$emit('selected', el)
+				// this.$parent.selected = Array.from(sections).indexOf(el) - 1
 			})
   },
-  unbind(element) {
-    element.scrollScene.destroy(true)
+  unbind(el) {
+    el.scrollScene.destroy(true)
   },
 })

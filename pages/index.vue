@@ -45,14 +45,75 @@
     <main class="content">
       <div class="container-fluid-limited">
         <div class="row">
-          <div ref="sections" class="col col-xl-9">
-            <Hero id="Top"/>
+          <div id="sections" ref="sections" class="col col-xl-9">
+						<!-- <Section id="Top"> -->
+						<Section id="Top" v-on-screen>
+							<div class="jumbotron jumbotron-fluid pt-6 pt-lg-8 pb-0 mb-0">
+								<img
+									src="assets/img/avatar.png"
+									class="jumbotron-img animation-translate animation-item-1"
+									alt="Avatar"
+								/>
+								<h1
+									class="
+										display-1 display-animated display-animated-in
+										animation-translate animation-item-2
+									"
+								>
+									Jan Carlo<br />Hendriks
+								</h1>
+								<p class="lead animation-translate animation-item-3">
+									FREELANCE WEBDEVELOPER
+								</p>
+								<!-- <nuxt-content :document="hero" /> -->
+							</div>
+						</Section>
+						<!-- <Section id="About"> -->
+						<Section id="About" v-on-screen>
+							<div class="row">
+								<div class="col col-xl-10">
+									<h2 class="section-title animation-translate-overline animation-item-1">
+										About me
+									</h2>
+									<article class="article animation-translate animation-item-2">
+										<p>
+											I'm freelance webdeveloper lorem ipsum dolor sit amet, consetetur
+											sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+											et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+											accusam et justo duo dolores et ea rebum. Stet clita kasd
+											gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+											Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+											nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+											erat, sed diam voluptua. At vero eos et accusam et justo duo
+											dolores et ea rebum.
+										</p>
+										<p>
+											Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+											nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+											erat, sed diam voluptua. At vero eos et accusam et justo duo
+											dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+											sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+											amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+											invidunt ut labore et dolore magna.
+										</p>
+										<p>
+											Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+											nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+											erat, sed diam voluptua. At vero eos et accusam et justo duo
+											dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+											sanctus est Lorem ipsum dolor sit amet.
+										</p>
+									</article>
+								</div>
+							</div>
+						</Section>
+            <!-- <Hero id="Top"/>
             <About id="About"/>
             <Skills id="Skills"/>
             <Facts id="Facts"/>
             <Experiences id="Experiences"/>
             <Projects id="Projects"/>
-            <Contact id="Contact"/>
+            <Contact id="Contact"/> -->
           </div>
         </div>
       </div>
@@ -66,61 +127,99 @@
 </template>
 
 <script>
-import ScrollMagic from 'scrollmagic'
-import Hero from '../components/sections/Hero.vue'
-import About from '../components/sections/About.vue'
-import Contact from '../components/sections/Contact.vue'
-import Experiences from '../components/sections/Experiences.vue'
-import Facts from '../components/sections/Facts.vue'
-import Projects from '../components/sections/Projects.vue'
-import Skills from '../components/sections/Skills.vue'
+// import ScrollMagic from 'scrollmagic'
+// import Hero from '../components/sections/Hero.vue'
+// import About from '../components/sections/About.vue'
+// import Contact from '../components/sections/Contact.vue'
+// import Experiences from '../components/sections/Experiences.vue'
+// import Facts from '../components/sections/Facts.vue'
+// import Projects from '../components/sections/Projects.vue'
+// import Skills from '../components/sections/Skills.vue'
 
-if (!window.ScrollControler)
-  window.ScrollControler = new ScrollMagic.Controller()
+// import { mapMutations } from 'vuex'
+
+// if (!window.ScrollControler)
+//   window.ScrollControler = new ScrollMagic.Controller()
 
 export default {
 	components: {
-		Hero,
-		About,
-		Contact,
-		Experiences,
-		Facts,
-		Projects,
-		Skills
+		// Hero,
+		// About,
+		// Contact,
+		// Experiences,
+		// Facts,
+		// Projects,
+		// Skills
 	},
 	data() {
 		return {
 			menuOpen: false,
 			sections: null,
-			selected: null
+			selected: 0
 		}
 	},
-	mounted() {
-		this.$nextTick(() => {
-			
-			this.sections = this.$refs.sections.children
-			
-			for (const section in this.sections) {
-				if (Object.hasOwnProperty.call(this.sections, section)) {
-					const element = this.sections[section];
-					
-					element.scrollScene = new ScrollMagic.Scene({
-						triggerHook: 0.5,
-						triggerElement: element,
-						reverse: true
-					})
-						.setClassToggle(element, 'interaction-in')
-						.addTo(window.ScrollControler)
-						.on('enter', () => {
-							this.selected = Array.from(this.sections).indexOf(element)
-						})
-						.on('leave', () => {
-							this.selected = Array.from(this.sections).indexOf(element) - 1
-						})
-				}
-			}
-		})
 
+	mounted() {
+		this.$on('selected', (e) => {
+			console.log(e);
+		}),
+		this.$on('sections', (e) => {
+			this.sections = e
+		})
+	},
+
+	async beforeMount() {
+		const content = await this.$content()
+			.sortBy('createdAt', 'desc')
+			.fetch()
+		console.log(content);
 	}
+
+
+	// CONTENT
+
+	// async asyncData({ $content, params }) {
+  //   const hero = await $content('', 'hero').fetch()
+  //   const index = await $content('', 'index').fetch()
+
+  //   return { hero, index }
+  // }
+
+
+
+	// updated() {
+	// 	this.sections = this.$refs.sections.children
+	// 	console.log(this.sections);
+	// },
+	
+	// mounted() {
+		
+	// 	this.sections = this.$refs.sections.children
+	// 	// this.$nextTick(() => {
+	// 		// this.sections = this.$refs.sections.children
+	// 		// console.log(this.sections);
+			
+	// 		for (const section in this.sections) {
+	// 			if (Object.hasOwnProperty.call(this.sections, section)) {
+	// 				const element = this.sections[section];
+					
+	// 				element.scrollScene = new ScrollMagic.Scene({
+	// 					triggerHook: 0.9,
+	// 					triggerElement: element,
+	// 					reverse: true
+	// 				})
+	// 					.setClassToggle(element, 'interaction-in')
+	// 					.addTo(window.ScrollControler)
+	// 					.on('enter', () => {
+	// 						this.selected = Array.from(this.sections).indexOf(element)
+	// 					})
+	// 					.on('leave', () => {
+	// 						this.selected = Array.from(this.sections).indexOf(element) - 1
+	// 					})
+	// 			}
+	// 		}
+	// 	// })
+
+	// }
 }
 </script>

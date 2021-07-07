@@ -1,50 +1,35 @@
 <template>
-  <section id="section-05" class="section animation">
-    <div class="section-body">
-      <h2 class="section-title animation-translate-overline animation-item-1">
-        Facts
-      </h2>
-      <div class="row animation-translate animation-item-2">
-        <div class="col-12 col-md-6 col-lg-3">
-          <div class="counter mb-6 mb-lg-0">
-            <span class="counter-label">Coffees / per day</span>
-            <span data-counter-from="0" data-counter-to="6">6</span>
-          </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-3">
-          <div class="counter mb-6 mb-lg-0">
-            <span class="counter-label">Launched websites</span>
-            <span data-counter-from="0" data-counter-to="64">64</span>
-          </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-3">
-          <div class="counter mb-6 mb-lg-0">
-            <span class="counter-label">Lines of code</span>
-            <span data-counter-from="0" data-counter-to="12000"
-              >12&nbsp;000</span
-            >
-          </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-3">
-          <div class="counter">
-            <span class="counter-label">Happy clients</span>
-            <span data-counter-from="0" data-counter-to="160">160</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="section-footer animation-translate animation-item-3">
-      <a class="section-next goto-section" href="#section-06">
-        <span class="section-next-counter">05/10</span>
-        <span class="section-next-label">Next chapter</span>
-        <span class="section-next-icon"></span>
-      </a>
-    </div>
-  </section>
+  <Section>
+		<h2 class="section-title animation-translate-overline animation-item-1">
+			Facts
+		</h2>
+		<div class="row animation-translate animation-item-2">
+			<div class="col-12 col-md-6 col-lg-3">
+				<div class="counter mb-6 mb-lg-0">
+					<span class="counter-label">Coffees / per day</span>
+					<span data-counter-from="0" data-counter-to="6">6</span>
+				</div>
+			</div>
+			<div class="col-12 col-md-6 col-lg-3">
+				<div class="counter mb-6 mb-lg-0">
+					<span class="counter-label">Launched websites</span>
+					<span data-counter-from="0" data-counter-to="64">64</span>
+				</div>
+			</div>
+			<div class="col-12 col-md-6 col-lg-3">
+				<div class="counter mb-6 mb-lg-0">
+					<span class="counter-label">Lines of code</span>
+					<span data-counter-from="0" data-counter-to="12000"
+						>12&nbsp;000</span
+					>
+				</div>
+			</div>
+			<div class="col-12 col-md-6 col-lg-3">
+				<div class="counter">
+					<span class="counter-label">Happy clients</span>
+					<span data-counter-from="0" data-counter-to="160">160</span>
+				</div>
+			</div>
+		</div>
+	</Section>
 </template>
-
-<script>
-export default {}
-</script>
-
-<style></style>
