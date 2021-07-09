@@ -1,14 +1,13 @@
-html {
+html, body {
 	scroll-behavior: smooth;
+	// max-height: 100vh;
+  // overflow-y: scroll;
+	scroll-snap-type: y proximity;
 }
 
-// .section {
-// 	min-height: 100vh;
-// }
-
-// .section-body {
-// 	background-color: red;
-// }
+.section {
+	scroll-snap-align: start;
+}
 
 .preview-themes {
 	position: fixed;
