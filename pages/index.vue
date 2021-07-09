@@ -39,9 +39,9 @@
           class="sections-nav-item"
         >
           <a
-            :href="'#' + section.id"
+						:href="'#' + section.id"
             class="nav-link sections-nav-link goto-section"
-            :class="{ 'active': index == selected }"
+            :class="{ active: index == selected }"
           >
             <span class="sections-nav-counter">{{ '0' + (index + 1) }}</span>
             {{ section.title }}
@@ -63,10 +63,10 @@
             <Section
               v-for="(section, index) in content.sections"
               :key="index"
-							:section="section"
+              :section="section"
               :count="{
                 index: index,
-                total: content.sections.length
+                total: content.sections.length,
               }"
             />
           </div>
@@ -85,7 +85,7 @@ import Section from '~/components/Section.vue'
 
 export default {
   components: {
-		Section
+    Section,
   },
 
   data() {
@@ -93,7 +93,8 @@ export default {
       menuOpen: false,
       selected: null,
       observer: null,
-			bodyTop: 0
+      bodyTop: 0,
+      isScrolling: false,
     }
   },
 
@@ -112,23 +113,56 @@ export default {
     this.initObserver()
     this.observeSections()
 
-		this.$on('next-section', () => {
-			this.nextSection()
-		})
+    // var isScrolling
+    // window.addEventListener('scroll', () => {
+		// 	this.isScrolling = true
+		// 	window.clearTimeout(isScrolling)
+		// 	isScrolling = setTimeout(() => this.isScrolling = !this.isScrolling, 66)
+    // }, false)
+
+    this.$on('next-section', () => {
+      this.nextSection()
+    })
   },
 
   methods: {
+    scrollTo(sectionId) {
+			// this.isScrolling = true
+			// var isScrolling
+			// window.addEventListener('scroll', () => {
+			// 	console.log(window.scrollY)
+			// 	this.bodyTop == newSection.getBoundingClientRect().top ?
+			// 	console.log("object")
+			// 	: null
+			// }, false)
 
-		nextSection() {
-			const newSection = this.sections[this.selected + 1]
-			const top = this.bodyTop + newSection.getBoundingClientRect().top
-			window.scrollTo({top:top})
-			this.bodyTop = top
-		},
+			this.isScrolling = true
+			var isScrolling
+			window.addEventListener('scroll', () => {
+				// window.clearTimeout(isScrolling)
+				// isScrolling = setTimeout(() => this.isScrolling = false, 66)
+				setTimeout(() => this.isScrolling = false, 66)
+			}, false)
+
+      const newSection = this.sections[sectionId]
+      const newSectionTop = newSection.getBoundingClientRect().top
+      const newTop = window.scrollY + newSectionTop
+      window.scrollTo({ top: newTop })
+      // const newTop = this.bodyTop + newSectionTop
+      // window.scrollTo({ top: newTop })
+			// this.bodyTop = top
+    },
+
+    nextSection() {
+      const newSection = this.sections[this.selected + 1]
+      const top = this.bodyTop + newSection.getBoundingClientRect().top
+      window.scrollTo({ top: top })
+      this.bodyTop = top
+    },
 
     observeSections() {
       this.sections.forEach((section) => {
-				this.observer.observe(section)
+        this.observer.observe(section)
       })
     },
 
@@ -137,19 +171,19 @@ export default {
         threshold: [0.5],
       }
       this.observer = new IntersectionObserver((entries) => {
-				entries.filter((e) => {
-					const selected = [...this.sections].indexOf(e.target)
-					e.isIntersecting ? (
-						this.selected = selected,
-						e.target.classList.add('interaction-in'),
-						!(window.onscroll) ? window.location.hash = this.sections[selected].id : null
-						) : null
-						// ) : e.target.classList.remove('interaction-in')
-				})
+        entries.filter((e) => {
+          const selected = [...this.sections].indexOf(e.target)
+          if (e.isIntersecting) {
+						this.selected = selected
+						e.target.classList.add('interaction-in')
+						// if (this.isScrolling == false) {
+						// 	window.location.hash = this.sections[selected].id
+						// }
+					}
+          // ) : e.target.classList.remove('interaction-in')
+        })
       }, options)
     },
   },
-
 }
-
 </script>
