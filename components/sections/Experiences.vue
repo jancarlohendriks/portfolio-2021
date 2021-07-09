@@ -1,5 +1,5 @@
 <template>
-  <Section>
+  <div>
 		<h2 class="section-title animation-translate-overline animation-item-1">
 			Experiences
 		</h2>
@@ -27,5 +27,5 @@
 				</p>
 			</div>
 		</div>
-	</Section>
+	</div>
 </template>

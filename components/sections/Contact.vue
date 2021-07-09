@@ -1,5 +1,5 @@
 <template>
-  <Section>
+  <div>
 		<h2 class="section-title animation-translate-overline animation-item-1">
 			Contact
 		</h2>
@@ -85,5 +85,5 @@
 				</form>
 			</div>
 		</div>
-	</Section>
+	</div>
 </template>

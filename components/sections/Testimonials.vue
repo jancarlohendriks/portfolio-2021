@@ -1,5 +1,5 @@
 <template>
-  <Section>
+  <div>
 		<h2 class="section-title animation-translate-overline animation-item-1">
 			Testimonials
 		</h2>
@@ -75,5 +75,5 @@
 				<span class="sr-only">Next</span>
 			</a>
 		</div>
-	</Section>
+	</div>
 </template>
