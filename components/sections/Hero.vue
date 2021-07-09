@@ -14,11 +14,11 @@
 <script>
 export default {
   props: ['content'],
-  data() {
-    return {
-      content: this.content,
-    }
-  },
+  // data() {
+  //   return {
+  //     content: this.content,
+  //   }
+  // },
 }
 </script>
 

@@ -1,6 +1,6 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
-	ssr: false,
+	// ssr: false,
   head: {
     title: 'portfolio-2021',
     htmlAttrs: {
@@ -21,7 +21,7 @@ export default {
     ],
 		script: [
       {
-        src: '/assets/js/base.js'
+        // src: '/assets/js/base.js'
       }
     ]
   },
@@ -31,11 +31,12 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-		{
-      src: '~/plugins/OnScreen.js',
-      ssr: false,
-      mode: 'client'
-    },
+		// { src: '~/plugins/ScrollMagic.js', mode: 'client' },
+		// {
+    //   src: '~/plugins/OnScreen.js',
+    //   ssr: false,
+    //   mode: 'client'
+    // },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
