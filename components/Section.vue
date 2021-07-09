@@ -13,7 +13,7 @@
           {{ '0' + (count.index + 1) }} /
           {{ count.total &lt; 10 ? '0' + count.total : count.total }}
         </span>
-        <span v-if="count.index + 1 !== count.total">
+        <span class="section-next" v-if="count.index + 1 !== count.total">
           <span class="section-next-label">Next chapter</span>
           <span class="section-next-icon"></span>
         </span>

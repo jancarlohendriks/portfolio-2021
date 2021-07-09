@@ -43,6 +43,11 @@
             class="nav-link sections-nav-link goto-section"
             :class="{ active: index == selected }"
           >
+          <!-- <a
+            class="nav-link sections-nav-link goto-section"
+            :class="{ active: index == selected }"
+						@click.prevent="scrollTo(index)"
+          > -->
             <span class="sections-nav-counter">{{ '0' + (index + 1) }}</span>
             {{ section.title }}
           </a>
@@ -93,8 +98,7 @@ export default {
       menuOpen: false,
       selected: null,
       observer: null,
-      bodyTop: 0,
-      isScrolling: false,
+      bodyTop: 0
     }
   },
 
@@ -113,12 +117,13 @@ export default {
     this.initObserver()
     this.observeSections()
 
-    // var isScrolling
-    // window.addEventListener('scroll', () => {
-		// 	this.isScrolling = true
-		// 	window.clearTimeout(isScrolling)
-		// 	isScrolling = setTimeout(() => this.isScrolling = !this.isScrolling, 66)
-    // }, false)
+    var isScrolling
+    window.addEventListener('scroll', () => {
+			window.clearTimeout(isScrolling)
+			isScrolling = setTimeout(() => {
+				window.location.hash = this.sections[this.selected].id
+			}, 66)
+    }, false)
 
     this.$on('next-section', () => {
       this.nextSection()
