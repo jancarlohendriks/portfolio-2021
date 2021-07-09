@@ -4,7 +4,7 @@
     data-spy="scroll"
     data-target="#sections-nav"
     data-offset="80"
-    :class="menuOpen ? 'sections-nav-in' : null"
+    :class="{ 'sections-nav-in': menuOpen }"
   >
     <header class="header">
       <div
@@ -15,7 +15,7 @@
           justify-content-between
         "
       >
-        <a href="index.html" class="header-brand">
+        <a href="/" class="header-brand">
           <!-- Jan Carlo -->
         </a>
         <button
@@ -32,11 +32,7 @@
     </header>
 
     <nav class="sections-nav-container">
-      <ul
-        id="sections-nav"
-        ref="nav"
-        class="nav sections-nav sections-nav-animated"
-      >
+      <ul id="sections-nav" class="nav sections-nav sections-nav-animated">
         <li
           v-for="(section, index) in content.sections"
           :key="index"
@@ -45,7 +41,7 @@
           <a
             :href="'#' + section.id"
             class="nav-link sections-nav-link goto-section"
-						:class="{'active': (index == selected)}"
+            :class="{ active: index == selected }"
           >
             <span class="sections-nav-counter">{{ '0' + (index + 1) }}</span>
             {{ section.title }}
@@ -64,9 +60,30 @@
       <div class="container-fluid-limited">
         <div class="row">
           <div id="sections" ref="sections" class="col col-xl-9">
-            <Hero :content="hero"></Hero>
-            <Hero :content="about"></Hero>
-            <Hero :content="skills"></Hero>
+            <Section
+              v-for="(section, index) in content.sections"
+              :key="index"
+              :section="section.id"
+              :count="{
+                index: index,
+                total: content.sections.length,
+              }"
+            />
+						<!-- <section class="section animation">
+							<div class="section-body">
+								0
+							</div>
+						</section>
+						<section class="section animation">
+							<div class="section-body">
+								1
+							</div>
+						</section>
+						<section class="section animation">
+							<div class="section-body">
+								2
+							</div>
+						</section> -->
           </div>
         </div>
       </div>
@@ -80,10 +97,12 @@
 
 <script>
 import Hero from '~/components/sections/Hero.vue'
+import Section from '~/components/Section.vue'
 
 export default {
   components: {
     Hero,
+		Section
   },
 
   data() {
@@ -102,14 +121,11 @@ export default {
     return { content, hero, about, skills }
   },
 
-	computed: {
-		sections() {
-			return this.$refs.sections.children
-		},
-		nav() {
-			return this.$refs.nav.children
-		}
-	},
+  computed: {
+    sections() {
+      return this.$refs.sections.children
+    },
+  },
 
   mounted() {
     this.initObserver()
@@ -135,24 +151,33 @@ export default {
       const options = {
         threshold: [0.5],
       }
-			this.observer = new IntersectionObserver(entries => {
-				const activeEntry = entries.filter(e => e.isIntersecting)
-				const index = [...this.sections].indexOf(activeEntry[0].target)
-				this.selected = index
-			}, options)
-    }
-
+      this.observer = new IntersectionObserver((entries) => {
+				entries.filter((e) => {
+					e.isIntersecting ? (
+						this.selected = [...this.sections].indexOf(e.target),
+						e.target.classList.add('interaction-in')
+						) : e.target.classList.remove('interaction-in')
+				})
+        
+				// const activeEntry = entries.filter((e) => e.isIntersecting)
+        // const index = [...this.sections].indexOf(activeEntry[0].target)
+        // this.selected = index
+        // entries.map((e) =>
+        //   e.intersectionRatio > 0
+        //     ? e.target.classList.add('interaction-in')
+        //     : e.target.classList.remove('interaction-in')
+        // )
+      }, options)
+    },
   },
 }
-
-
 
 // if (process.client) {
 // 	this.sections = this.$refs.sections.children
 // 	let nav = this.$refs.nav.children
 
 // 	for (const section in this.sections) {
-		
+
 // 		if (Object.hasOwnProperty.call(this.sections, section)) {
 // 			const element = this.sections[section]
 // 			const controller = new this.$scrollmagic.Controller()
@@ -161,7 +186,7 @@ export default {
 // 			console.log(link);
 
 // 			this.selected = section
-			
+
 // 			element.scrollScene = new this.$scrollmagic.Scene({
 // 				triggerHook: 0.5,
 // 				triggerElement: element,
@@ -190,7 +215,5 @@ export default {
 
 // }
 
-
 // this.selected = 0
 </script>
-

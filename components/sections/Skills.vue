@@ -1,5 +1,5 @@
 <template>
-  <Section>
+	<div>
 		<h2 class="section-title animation-translate-overline animation-item-1">
 			Skills
 		</h2>
@@ -75,5 +75,5 @@
 				</div>
 			</div>
 		</div>
-	</Section>
+	</div>
 </template>
