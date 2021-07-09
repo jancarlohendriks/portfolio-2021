@@ -63,7 +63,7 @@
             <Section
               v-for="(section, index) in content.sections"
               :key="index"
-              :section="section.id"
+							:section="section"
               :count="{
                 index: index,
                 total: content.sections.length
@@ -93,6 +93,7 @@ export default {
       menuOpen: false,
       selected: null,
       observer: null,
+			bodyTop: 0
     }
   },
 
@@ -110,9 +111,21 @@ export default {
   mounted() {
     this.initObserver()
     this.observeSections()
+
+		this.$on('next-section', () => {
+			this.nextSection()
+		})
   },
 
   methods: {
+
+		nextSection() {
+			const newSection = this.sections[this.selected + 1]
+			const top = this.bodyTop + newSection.getBoundingClientRect().top
+			window.scrollTo({top:top})
+			this.bodyTop = top
+		},
+
     observeSections() {
       this.sections.forEach((section) => {
 				this.observer.observe(section)
@@ -125,9 +138,11 @@ export default {
       }
       this.observer = new IntersectionObserver((entries) => {
 				entries.filter((e) => {
+					const selected = [...this.sections].indexOf(e.target)
 					e.isIntersecting ? (
-						this.selected = [...this.sections].indexOf(e.target),
-						e.target.classList.add('interaction-in')
+						this.selected = selected,
+						e.target.classList.add('interaction-in'),
+						!(window.onscroll) ? window.location.hash = this.sections[selected].id : null
 						) : null
 						// ) : e.target.classList.remove('interaction-in')
 				})

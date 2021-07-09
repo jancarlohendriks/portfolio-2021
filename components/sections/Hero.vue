@@ -12,11 +12,21 @@
           animation-translate animation-item-2
         "
       >
-        Jan Carlo<br />Hendriks
+				{{ content.name }}
       </h1>
       <p class="lead animation-translate animation-item-3">
-        FREELANCE WEBDEVELOPER
+				{{ content.function }}
       </p>
     </div>
   </div>
 </template>
+<script>
+export default {
+	props: {
+		content: {
+			type: Object,
+			required: true
+		}
+	}
+}
+</script>
