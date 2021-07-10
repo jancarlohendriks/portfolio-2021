@@ -33,11 +33,21 @@
 				"projects": [
 					{
 						"id": 0,
-						"title": "Project 1"
+						"title": "Nanovo",
+						"subtitle": "Design e-shop",
+						"tags": "Frontend — Backend"
 					},
 					{
 						"id": 1,
-						"title": "Project 2"
+						"title": "Bbop",
+						"subtitle": "Social Network for Musicians",
+						"tags": "Design — Frontend — Backend"
+					},
+					{
+						"id": 2,
+						"title": "Janja Prokić",
+						"subtitle": "Jewelry e-shop",
+						"tags": "Frontend — Backend"
 					}
 				]
 			}

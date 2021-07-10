@@ -2,7 +2,7 @@
   <!-- <transition name="fade" :duration="1000"> -->
   <transition name="fade">
     <article id="modal-project-1" class="modal fade show">
-			<div class="modal-backdrop fade show"></div>
+			<!-- <div class="modal-backdrop fade show"></div> -->
       <div class="modal-dialog modal-fluid">
         <div class="modal-content">
           <div class="modal-header">

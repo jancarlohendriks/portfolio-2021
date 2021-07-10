@@ -1,7 +1,8 @@
+$scrollbar-width: .5rem;
+
 @import 'layout';
 @import 'modal';
 
-$scrollbar-width: .5rem;
 
 ::-webkit-scrollbar {
 	width: $scrollbar-width;

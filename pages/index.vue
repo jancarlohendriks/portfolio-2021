@@ -37,14 +37,14 @@
           class="sections-nav-item"
         >
             <!-- :href="'#' + section.navName" -->
-          <a
+          <div
             class="nav-link sections-nav-link goto-section"
-            :class="{ active: index == selected }"
-						@click.prevent="goTo(index)"
+            :class="{ 'active': index == selected }"
+						@click="goTo(index)"
           >
             <span class="sections-nav-counter">{{ '0' + (index + 1) }}</span>
             {{ section.navName }}
-          </a>
+          </div>
         </li>
         <li class="sections-nav-item">
           <div class="sections-nav-info">
@@ -73,13 +73,8 @@
       </div>
     </main>
 
-    <!-- Modals -->
-
     <Modals v-show="modalOpen" :project="projects[0]" />
 
-		<!-- <transition name="fade">
-    	<div v-show="modalOpen" class="modal-backdrop fade show"></div>
-		</transition> -->
   </div>
 </template>
 
@@ -123,11 +118,16 @@ export default {
     },
   },
 
+	beforeMount() {
+		const newHash = this.content.sections[0].navName
+		window.location.hash = newHash
+	},
+
   mounted() {
     this.initObserver()
     this.observeSections()
     this.pageBody.addEventListener('scroll', this.onScroll)
-    this.$on('next-section', () => { this.nextSection() })
+    this.$root.$on('next-section', () => { this.nextSection() })
     this.$root.$on('modal-open', (e) => { this.modalOpen = true })
     this.$root.$on('modal-close', () => { this.modalOpen = false })
   },
@@ -142,10 +142,16 @@ export default {
 		},
 
     nextSection() {
-			this.goTo(this.selected + 1)
+			// console.log(this.sections[this.selected + 1]);
+			// console.log(this.selected + 1);
+			const newSection = this.selected + 1
+			this.goTo(newSection)
     },
 
 		goTo(index) {
+
+			if (this.selected == index) { return }
+
 			this.menuOpen == true ? this.menuOpen = false : null
 
 			const newSection = this.sections[index]

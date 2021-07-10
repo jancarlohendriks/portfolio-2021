@@ -8,7 +8,7 @@
       <component :content="section" :is="componentType"></component>
     </div>
     <div class="section-footer animation-translate animation-item-4">
-      <div class="section-next goto-section" @click="$parent.$emit('next-section')">
+      <div class="section-next goto-section" @click="$root.$emit('next-section')">
         <span class="section-next-counter">
           {{ '0' + (count.index + 1) }} /
           {{ count.total &lt; 10 ? '0' + count.total : count.total }}
