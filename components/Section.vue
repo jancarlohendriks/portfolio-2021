@@ -37,7 +37,7 @@ export default {
   computed: {
     componentType: function () {
       if (this.section) {
-        return () => import(`~/components/sections/${this.section.fileName}`)
+        return () => import(/* webpackPrefetch: true */ `~/components/sections/${this.section.fileName}`)
       }
       return null
     },

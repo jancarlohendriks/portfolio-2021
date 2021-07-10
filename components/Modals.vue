@@ -3,7 +3,6 @@
 		id="modal-project-1"
 		class="modal fade show"
 	>
-		<!-- class="modal fade" :class="{ 'show': isOpen }" -->
 		<div class="modal-dialog modal-fluid">
 			<div class="modal-content">
 				<div class="modal-header">

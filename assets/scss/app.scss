@@ -19,13 +19,16 @@ html, body {
 }
 
 body {
-	overflow: hidden;
+	// overflow: hidden;
 }
 
 .page-body {
 	position: relative;
 	height: 100vh;
-	overflow: auto;
+	// overflow: auto;
+	&.modal-open {
+		overflow: hidden;
+	}
 }
 
 .section {

@@ -1,14 +1,7 @@
 <template>
-  <!-- <div
-    class="page-body with-header position-relative"
-    data-spy="scroll"
-    data-target="#sections-nav"
-    data-offset="80"
-    :class="{ 'sections-nav-in': menuOpen, 'modal-open': modalOpen }"
-  > -->
   <div
     class="page-body with-header"
-    :class="{ 'sections-nav-in': menuOpen, 'modal-open': modalOpen }"
+    :class="{ 'modal-open': modalOpen, 'sections-nav-in': menuOpen }"
   >
     <header class="header">
       <div
@@ -43,7 +36,7 @@
           class="sections-nav-item"
         >
           <a
-						:href="'#' + section.navName"
+            :href="'#' + section.navName"
             class="nav-link sections-nav-link goto-section"
             :class="{ active: index == selected }"
           >
@@ -80,23 +73,21 @@
 
     <!-- Modals -->
 
-    <!-- <Modals :isOpen="modalOpen" :project="projects[0]" /> -->
+    <!-- @click="$parent.$el.scrollTo(0, 0)" -->
     <Modals v-if="modalOpen" :project="projects[0]" />
 
-		<div v-if="modalOpen" class="modal-backdrop fade show"></div>
-  
-	</div>
+    <div v-if="modalOpen" class="modal-backdrop fade show"></div>
+  </div>
 </template>
 
 <script>
 import Section from '~/components/Section.vue'
-// import Modals from '~/components/Modals.vue'
 
 export default {
   components: {
     Section,
-		Modals: () => import(/* webpackChunkName: "Modals" */ '~/components/Modals.vue')
-		// Modals: () => import(/* webpackPrefetch: true */ '~/components/Modals.vue')
+    Modals: () =>
+      import(/* webpackChunkName: "Modals" */ '~/components/Modals.vue'),
   },
 
   data() {
@@ -118,8 +109,10 @@ export default {
       return this.$refs.sections.children
     },
     projects() {
-      const projects = this.content.sections.filter(e => e.fileName == 'Projects')[0].projects
-			return projects
+      const projects = this.content.sections.filter(
+        (e) => e.fileName == 'Projects'
+      )[0].projects
+      return projects
     },
   },
 
@@ -127,26 +120,35 @@ export default {
     this.initObserver()
     this.observeSections()
 
-    // var isScrolling
-    // window.addEventListener('scroll', () => {
-		// 	window.clearTimeout(isScrolling)
-		// 	isScrolling = setTimeout(() => {
-		// 		// const newHash = this.content.sections[this.selected].navName
-		// 		const newHash = this.sections[this.selected].id
-		// 		window.location.hash = newHash
-		// 	}, 66)
-    // }, false)
+    var isScrolling
+    window.addEventListener('scroll', () => {
+        window.clearTimeout(isScrolling)
+        isScrolling = setTimeout(() => {
+          // const newHash = this.content.sections[this.selected].navName
+          const newHash = this.sections[this.selected].id
+          window.location.hash = newHash
+        }, 66)
+      },
+      false
+    )
 
     this.$on('next-section', () => {
       this.nextSection()
     })
 
     this.$root.$on('modal-open', (e) => {
-			this.modalOpen = true
+      this.modalOpen = true
+      // document.body.style.overflow = 'hidden'
+
+			const section = [...this.sections].find((s) => s.id == 'Projects')
+      const newSectionTop = section.getBoundingClientRect().top
+			console.log(newSectionTop);
+			// window.scrollTo({ top: newSectionTop })
     })
 
     this.$root.$on('modal-close', () => {
-			this.modalOpen = false
+      // document.body.style.overflow = 'auto'
+      this.modalOpen = false
     })
   },
 
@@ -170,10 +172,9 @@ export default {
         entries.filter((e) => {
           const selected = [...this.sections].indexOf(e.target)
           if (e.isIntersecting) {
-						this.selected = selected
-						e.target.classList.add('interaction-in')
-					}
-          // ) : e.target.classList.remove('interaction-in')
+            this.selected = selected
+            e.target.classList.add('interaction-in')
+          }
         })
       }, options)
     },
