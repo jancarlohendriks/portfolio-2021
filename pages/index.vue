@@ -14,7 +14,7 @@
         "
       >
         <a href="/" class="header-brand">
-          <!-- Jan Carlo -->
+          Jan Carlo
         </a>
         <button
           @click="menuOpen = !menuOpen"
@@ -36,13 +36,12 @@
           :key="index"
           class="sections-nav-item"
         >
+            <!-- :href="'#' + section.navName" -->
           <a
-            :href="'#' + section.navName"
             class="nav-link sections-nav-link goto-section"
             :class="{ active: index == selected }"
 						@click.prevent="goTo(index)"
           >
-						<!-- @click="(menuOpen == true) ? menuOpen = false : null" -->
             <span class="sections-nav-counter">{{ '0' + (index + 1) }}</span>
             {{ section.navName }}
           </a>
@@ -76,9 +75,11 @@
 
     <!-- Modals -->
 
-    <Modals v-if="modalOpen" :project="projects[0]" />
+    <Modals v-show="modalOpen" :project="projects[0]" />
 
-    <div v-if="modalOpen" class="modal-backdrop fade show"></div>
+		<!-- <transition name="fade">
+    	<div v-show="modalOpen" class="modal-backdrop fade show"></div>
+		</transition> -->
   </div>
 </template>
 
@@ -125,34 +126,17 @@ export default {
   mounted() {
     this.initObserver()
     this.observeSections()
-
-    // var isScrolling
     this.pageBody.addEventListener('scroll', this.onScroll)
-
-    this.$on('next-section', () => {
-      this.nextSection()
-    })
-
-    this.$root.$on('modal-open', (e) => {
-      this.modalOpen = true
-			// const section = [...this.sections].find((s) => s.id == 'Projects')
-      // const newSectionTop = section.getBoundingClientRect().top
-			// console.log(newSectionTop);
-			// window.scrollTo({ top: newSectionTop })
-    })
-
-    this.$root.$on('modal-close', () => {
-      this.modalOpen = false
-    })
+    this.$on('next-section', () => { this.nextSection() })
+    this.$root.$on('modal-open', (e) => { this.modalOpen = true })
+    this.$root.$on('modal-close', () => { this.modalOpen = false })
   },
 
   methods: {
-
 		onScroll(e) {
 			window.clearTimeout(this.isScrolling)
 			this.isScrolling = setTimeout(() => {
 				const newHash = this.content.sections[this.selected].navName
-				// const newHash = this.sections[this.selected].id
 				window.location.hash = newHash
       }, 66)
 		},
@@ -184,7 +168,6 @@ export default {
           if (e.isIntersecting) {
             this.selected = selected
             e.target.classList.add('interaction-in')
-						// window.location.hash = this.content.sections[selected].navName
           }
         })
       }, options)

@@ -1,0 +1,25 @@
+body {
+	overflow: hidden;
+}
+
+html, body, .page-body {
+	scroll-behavior: smooth;
+	@media (min-width: 768px) {
+		scroll-snap-type: y mandatory;
+	}
+}
+
+.page-body {
+	position: relative;
+	height: 100vh;
+	overflow: auto;
+	&.modal-open {
+		overflow: hidden;
+	}
+}
+
+.section {
+	@media (min-width: 768px) {
+		scroll-snap-align: start;
+	}
+}
