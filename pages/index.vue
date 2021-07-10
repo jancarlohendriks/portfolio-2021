@@ -1,5 +1,6 @@
 <template>
   <div
+		id="page-body"
     class="page-body with-header"
     :class="{ 'modal-open': modalOpen, 'sections-nav-in': menuOpen }"
   >
@@ -39,7 +40,9 @@
             :href="'#' + section.navName"
             class="nav-link sections-nav-link goto-section"
             :class="{ active: index == selected }"
+						@click.prevent="goTo(index)"
           >
+						<!-- @click="(menuOpen == true) ? menuOpen = false : null" -->
             <span class="sections-nav-counter">{{ '0' + (index + 1) }}</span>
             {{ section.navName }}
           </a>
@@ -73,7 +76,6 @@
 
     <!-- Modals -->
 
-    <!-- @click="$parent.$el.scrollTo(0, 0)" -->
     <Modals v-if="modalOpen" :project="projects[0]" />
 
     <div v-if="modalOpen" class="modal-backdrop fade show"></div>
@@ -96,6 +98,7 @@ export default {
       modalOpen: false,
       selected: null,
       observer: null,
+			isScrolling: false
     }
   },
 
@@ -108,6 +111,9 @@ export default {
     sections() {
       return this.$refs.sections.children
     },
+    pageBody() {
+			return document.getElementById('page-body')
+		},
     projects() {
       const projects = this.content.sections.filter(
         (e) => e.fileName == 'Projects'
@@ -120,17 +126,8 @@ export default {
     this.initObserver()
     this.observeSections()
 
-    var isScrolling
-    window.addEventListener('scroll', () => {
-        window.clearTimeout(isScrolling)
-        isScrolling = setTimeout(() => {
-          // const newHash = this.content.sections[this.selected].navName
-          const newHash = this.sections[this.selected].id
-          window.location.hash = newHash
-        }, 66)
-      },
-      false
-    )
+    // var isScrolling
+    this.pageBody.addEventListener('scroll', this.onScroll)
 
     this.$on('next-section', () => {
       this.nextSection()
@@ -138,27 +135,40 @@ export default {
 
     this.$root.$on('modal-open', (e) => {
       this.modalOpen = true
-      // document.body.style.overflow = 'hidden'
-
-			const section = [...this.sections].find((s) => s.id == 'Projects')
-      const newSectionTop = section.getBoundingClientRect().top
-			console.log(newSectionTop);
+			// const section = [...this.sections].find((s) => s.id == 'Projects')
+      // const newSectionTop = section.getBoundingClientRect().top
+			// console.log(newSectionTop);
 			// window.scrollTo({ top: newSectionTop })
     })
 
     this.$root.$on('modal-close', () => {
-      // document.body.style.overflow = 'auto'
       this.modalOpen = false
     })
   },
 
   methods: {
+
+		onScroll(e) {
+			window.clearTimeout(this.isScrolling)
+			this.isScrolling = setTimeout(() => {
+				const newHash = this.content.sections[this.selected].navName
+				// const newHash = this.sections[this.selected].id
+				window.location.hash = newHash
+      }, 66)
+		},
+
     nextSection() {
-      const newSection = this.sections[this.selected + 1]
+			this.goTo(this.selected + 1)
+    },
+
+		goTo(index) {
+			this.menuOpen == true ? this.menuOpen = false : null
+
+			const newSection = this.sections[index]
       const newSectionTop = newSection.getBoundingClientRect().top
       const newScrollTop = window.scrollY + newSectionTop
-      window.scrollTo({ top: newScrollTop })
-    },
+			this.pageBody.scrollTo({ top: newScrollTop })
+		},
 
     observeSections() {
       this.sections.forEach((section) => {
@@ -174,6 +184,7 @@ export default {
           if (e.isIntersecting) {
             this.selected = selected
             e.target.classList.add('interaction-in')
+						// window.location.hash = this.content.sections[selected].navName
           }
         })
       }, options)

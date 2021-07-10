@@ -11,28 +11,32 @@
 	background-color: #000;
 }
 
-html, body {
-	scroll-behavior: smooth;
-	scroll-snap-type: y proximity;
-	// max-height: 100vh;
-  // overflow-y: scroll;
+body {
+	overflow: hidden;
 }
 
-body {
-	// overflow: hidden;
+html, body, .page-body {
+	scroll-behavior: smooth;
+	@media (min-width: 768px) {
+		scroll-snap-type: y mandatory;
+	}
+	// max-height: 100vh;
+  // overflow-y: scroll;
 }
 
 .page-body {
 	position: relative;
 	height: 100vh;
-	// overflow: auto;
+	overflow: auto;
 	&.modal-open {
 		overflow: hidden;
 	}
 }
 
 .section {
-	scroll-snap-align: start;
+	@media (min-width: 768px) {
+		scroll-snap-align: start;
+	}
 }
 
 .preview-themes {
