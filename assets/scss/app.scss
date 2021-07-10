@@ -1,8 +1,31 @@
+::-webkit-scrollbar {
+	width: .5rem;
+}
+
+::-webkit-scrollbar-track {
+	// background-color: lighten($color: #ffdb67, $amount: 20%);
+	background-color: rgba($color: #000, $alpha: 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #000;
+}
+
 html, body {
 	scroll-behavior: smooth;
+	scroll-snap-type: y proximity;
 	// max-height: 100vh;
   // overflow-y: scroll;
-	scroll-snap-type: y proximity;
+}
+
+body {
+	overflow: hidden;
+}
+
+.page-body {
+	position: relative;
+	height: 100vh;
+	overflow: auto;
 }
 
 .section {
@@ -11801,6 +11824,11 @@ a.badge-danger:focus {
   overflow: hidden;
   outline: 0;
 }
+
+.modal.show {
+ display: block;
+}
+
 .modal-dialog {
   position: relative;
   width: auto;

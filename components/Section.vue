@@ -1,6 +1,6 @@
 <template>
   <section
-    :id="section.id"
+    :id="section.navName"
     class="section animation"
     :class="{ 'section-sub-header': count.index == 0 }"
   >
@@ -37,7 +37,7 @@ export default {
   computed: {
     componentType: function () {
       if (this.section) {
-        return () => import(`~/components/sections/${this.section.id}`)
+        return () => import(`~/components/sections/${this.section.fileName}`)
       }
       return null
     },
