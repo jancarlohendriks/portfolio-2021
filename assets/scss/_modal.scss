@@ -53,7 +53,7 @@
   height: 100%;
   overflow: hidden;
   outline: 0;
-	background-color: rgba(#ffdb67, .9);
+	background-color: rgba($color-primary, .95);
 }
 
 .modal.show {
@@ -142,7 +142,7 @@
   // width: 100vw;
 	width: calc(100vw - #{$scrollbar-width});
   height: 100vh;
-  background-color: #ffdb67;
+  background-color: $color-primary;
 }
 .modal-backdrop.fade {
   opacity: 0;

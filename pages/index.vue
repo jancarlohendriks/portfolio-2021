@@ -14,7 +14,10 @@
         "
       >
         <a href="/" class="header-brand">
-          Jan Carlo
+          Personal Portfolio
+        </a>
+        <a href="/" class="header-brand">
+          Jan Carlo Hendriks
         </a>
         <button
           @click="menuOpen = !menuOpen"
@@ -41,15 +44,14 @@
             class="nav-link sections-nav-link goto-section"
             :class="{ 'active': index == selected }"
           >
-						<!-- @click="goTo(index)" -->
             <span class="sections-nav-counter">{{ '0' + (index + 1) }}</span>
             {{ section.navName }}
           </a>
         </li>
         <li class="sections-nav-item">
           <div class="sections-nav-info">
-            <a href="mailto:john@wilson.com">john@wilson.com</a><br />
-            <a href="tel:+420652887351">+420 652 887 351</a>
+            <a :href="'mailto:' + content.personal.email">{{ content.personal.email }}</a><br />
+            <a :href="'tel:' + content.personal.phone">{{ content.personal.phone }}</a>
           </div>
         </li>
       </ul>
@@ -136,8 +138,6 @@ export default {
 
   methods: {
 		onScroll(e) {
-			// window.clearTimeout(this.isScrolling)
-			// this.isScrolling = setTimeout(() => {
 			window.clearTimeout(isScrolling)
 			isScrolling = setTimeout(() => {
 				const newHash = this.content.sections[this.selected].navName
@@ -145,30 +145,10 @@ export default {
       }, 66)
 		},
 
-    nextSection(index) {
-			// console.log(this.sections[this.selected + 1]);
-			// console.log(this.selected + 1);
-			// const newSection = this.selected + 1
-			// this.goTo(index)
-			console.log(index);
-    },
-
 		goTo(index) {
 			if (this.selected == index) { return }
-
-			// const newHash = this.content.sections[index].navName
-			// location.hash = newHash
-
 			const newSection = this.sections[index]
 			newSection.scrollIntoView()
-
-
-			// this.menuOpen == true ? this.menuOpen = false : null
-
-			// const newSection = this.sections[index]
-      // const newSectionTop = newSection.getBoundingClientRect().top
-      // const newScrollTop = window.scrollY + newSectionTop
-			// this.pageBody.scrollTo({ top: newScrollTop })
 		},
 
     observeSections() {
