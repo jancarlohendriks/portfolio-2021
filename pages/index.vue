@@ -36,15 +36,15 @@
           :key="index"
           class="sections-nav-item"
         >
-            <!-- :href="'#' + section.navName" -->
-          <div
+          <a
+            :href="'#' + section.navName"
             class="nav-link sections-nav-link goto-section"
             :class="{ 'active': index == selected }"
-						@click="goTo(index)"
           >
+						<!-- @click="goTo(index)" -->
             <span class="sections-nav-counter">{{ '0' + (index + 1) }}</span>
             {{ section.navName }}
-          </div>
+          </a>
         </li>
         <li class="sections-nav-item">
           <div class="sections-nav-info">
@@ -80,6 +80,8 @@
 
 <script>
 import Section from '~/components/Section.vue'
+
+var isScrolling
 
 export default {
   components: {
@@ -127,37 +129,46 @@ export default {
     this.initObserver()
     this.observeSections()
     this.pageBody.addEventListener('scroll', this.onScroll)
-    this.$root.$on('next-section', () => { this.nextSection() })
+    this.$root.$on('next-section', (index) => { this.goTo(index) })
     this.$root.$on('modal-open', (e) => { this.modalOpen = true })
     this.$root.$on('modal-close', () => { this.modalOpen = false })
   },
 
   methods: {
 		onScroll(e) {
-			window.clearTimeout(this.isScrolling)
-			this.isScrolling = setTimeout(() => {
+			// window.clearTimeout(this.isScrolling)
+			// this.isScrolling = setTimeout(() => {
+			window.clearTimeout(isScrolling)
+			isScrolling = setTimeout(() => {
 				const newHash = this.content.sections[this.selected].navName
 				window.location.hash = newHash
       }, 66)
 		},
 
-    nextSection() {
+    nextSection(index) {
 			// console.log(this.sections[this.selected + 1]);
 			// console.log(this.selected + 1);
-			const newSection = this.selected + 1
-			this.goTo(newSection)
+			// const newSection = this.selected + 1
+			// this.goTo(index)
+			console.log(index);
     },
 
 		goTo(index) {
-
 			if (this.selected == index) { return }
 
-			this.menuOpen == true ? this.menuOpen = false : null
+			// const newHash = this.content.sections[index].navName
+			// location.hash = newHash
 
 			const newSection = this.sections[index]
-      const newSectionTop = newSection.getBoundingClientRect().top
-      const newScrollTop = window.scrollY + newSectionTop
-			this.pageBody.scrollTo({ top: newScrollTop })
+			newSection.scrollIntoView()
+
+
+			// this.menuOpen == true ? this.menuOpen = false : null
+
+			// const newSection = this.sections[index]
+      // const newSectionTop = newSection.getBoundingClientRect().top
+      // const newScrollTop = window.scrollY + newSectionTop
+			// this.pageBody.scrollTo({ top: newScrollTop })
 		},
 
     observeSections() {
