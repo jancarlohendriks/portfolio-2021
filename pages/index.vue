@@ -194,15 +194,26 @@ export default {
 
     var mouse = { x: 0, y: 0 }
 
-		// let anchors = [
-		// 	this.$refs.nav
-		// ]
-		
-		// anchors.forEach(anchor => {
-		// 	anchor.addEventListener('mouseover', () => {
-		// 		cursor.classList.toggle('active')
-		// 	})
-		// })
+		// const pageBody = this.pageBody
+
+		// pageBody.addEventListener('DOMMouseScroll', onMouseWheel, false);
+		// pageBody.onmousewheel = document.onmousewheel = onMouseWheel; // IE
+
+		// function onMouseWheel(event) {
+		// 		event.stopPropagation();
+		// 		event.preventDefault();
+		// 		event.cancelBubble = true;
+
+		// 		pageBody.scroll({
+		// 			top: pageBody.scrollTop + event.deltaY * 5,
+		// 			left: 0,
+		// 			behavior: 'smooth'
+		// 		});
+
+		// 		console.log(event);
+
+		// 		return false;
+		// }
 
   },
 
