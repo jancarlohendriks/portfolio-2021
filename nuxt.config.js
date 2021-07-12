@@ -14,9 +14,13 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+			// {
+			// 	rel: 'stylesheet',
+			// 	href: 'https://fonts.googleapis.com/css?family=Montserrat:400,700,800&amp;display=swap'
+			// }
 			{
 				rel: 'stylesheet',
-				href: 'https://fonts.googleapis.com/css?family=Montserrat:400,700,800&amp;display=swap'
+				href: 'https://use.typekit.net/abt6rwi.css'
 			}
     ],
 		script: [

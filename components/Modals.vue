@@ -20,8 +20,8 @@
             <article class="article">
               <div class="article-header">
                 <h2 class="article-title">{{ project.title }}</h2>
-                <h3 class="article-subtitle">Design e-shop</h3>
-                <p class="article-tags">Design — Frontend — Backend</p>
+                <h3 class="article-subtitle">{{ project.subtitle }}</h3>
+                <p class="article-tags">{{ project.tags }}</p>
               </div>
               <main class="row flex-column-reverse flex-lg-row">
                 <div class="col-12 col-lg-6">
@@ -61,7 +61,7 @@
                 <div class="col-12 col-lg-6">
                   <img
                     class="img-fluid mb-10"
-                    src="assets/img/project_1.jpg"
+                    :src="`assets/img/${project.img}`"
                     alt="Nanovo"
                   />
                 </div>

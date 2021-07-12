@@ -75,7 +75,7 @@
       </div>
     </main>
 
-    <Modals v-show="modalOpen" :project="projects[0]" />
+    <Modals v-show="modalOpen" :project="project" />
 
   </div>
 </template>
@@ -98,7 +98,8 @@ export default {
       modalOpen: false,
       selected: null,
       observer: null,
-			isScrolling: false
+			isScrolling: false,
+			project: null
     }
   },
 
@@ -119,12 +120,13 @@ export default {
         (e) => e.fileName == 'Projects'
       )[0].projects
       return projects
-    },
+    }
   },
 
-	beforeMount() {
-		const newHash = this.content.sections[0].navName
-		window.location.hash = newHash
+	created() {
+		this.project = this.projects[0]
+		// const newHash = this.content.sections[0].navName
+		// window.location.hash = newHash
 	},
 
   mounted() {
@@ -132,17 +134,22 @@ export default {
     this.observeSections()
     this.pageBody.addEventListener('scroll', this.onScroll)
     this.$root.$on('next-section', (index) => { this.goTo(index) })
-    this.$root.$on('modal-open', (e) => { this.modalOpen = true })
+    this.$root.$on('modal-open', (e) => {
+			this.project = this.projects[e]
+			this.modalOpen = true
+		})
     this.$root.$on('modal-close', () => { this.modalOpen = false })
   },
 
   methods: {
 		onScroll(e) {
-			window.clearTimeout(isScrolling)
-			isScrolling = setTimeout(() => {
-				const newHash = this.content.sections[this.selected].navName
-				window.location.hash = newHash
-      }, 66)
+			const newHash = this.content.sections[this.selected].navName
+			history.replaceState( {} , newHash, `/#${newHash}` )
+			// window.clearTimeout(isScrolling)
+			// isScrolling = setTimeout(() => {
+			// 	const newHash = this.content.sections[this.selected].navName
+			// 	window.location.hash = newHash
+      // }, 66)
 		},
 
 		goTo(index) {

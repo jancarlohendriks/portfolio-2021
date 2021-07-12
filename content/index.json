@@ -10,8 +10,11 @@
 				"fileName": "Hero",
 				"navName": "Top",
 				"title": "Top",
-				"name": "Jan Carlo \n Hendriks",
-				"function": "FREELANCE WEBDEVELOPER",
+				"name": [
+					"Jan Carlo",
+					"Hendriks"
+				],
+				"function": "FULLTIME WEBDEVELOPER",
 				"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 			},
 			{
@@ -21,14 +24,15 @@
 				"title": "About me",
 				"text": [
 					"Peruvian-dutch Digital Designer with main focus on Web Technologies.",
-					"Furthermore, I am a SintLucas 4 year Interactive Design graduate, with 3 years of work experience in Web Development. Currently I am deepening my knowlegde into the IT world at Fontys University of Applied sciences.",
+					"Previously graduated from a 4 year studies in Media and Interaction Design, and now with 3 years of work experience in Web Development.",
+					"Currently I am deepening my knowlegde into the IT world at Fontys University of Applied sciences.",
 					"In my spare time, I like to share a beer with open-minded people and have a good time under some techno music."
 				]
 			},
 			{
 				"id": 3,
 				"fileName": "Skills",
-				"navName": "Tech Stack",
+				"navName": "Skills",
 				"title": "Skills",
 				"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 			},
@@ -41,21 +45,38 @@
 				"projects": [
 					{
 						"id": 0,
-						"title": "Nanovo",
-						"subtitle": "Design e-shop",
-						"tags": "Frontend — Backend"
+						"title": "Studio Bert Govers",
+						"subtitle": "Product Design Portfolio",
+						"tags": "Laravel — Vue.js",
+						"img": "project-bert.png"
 					},
 					{
 						"id": 1,
-						"title": "Bbop",
-						"subtitle": "Social Network for Musicians",
-						"tags": "Design — Frontend — Backend"
+						"title": "Schommel aan tafel",
+						"subtitle": "Landing Page",
+						"tags": "Nuxt.js",
+						"img": "project-schommel.png"
 					},
 					{
 						"id": 2,
-						"title": "Janja Prokić",
-						"subtitle": "Jewelry e-shop",
-						"tags": "Frontend — Backend"
+						"title": "Mooi! bij Maud",
+						"subtitle": "Beauty Salon",
+						"tags": "Wordpress",
+						"img": "project-mooi.png"
+					},
+					{
+						"id": 3,
+						"title": "STRP",
+						"subtitle": "Events & Tickets Overview",
+						"tags": "Vue.js",
+						"img": "project-strp.png"
+					},
+					{
+						"id": 4,
+						"title": "Riverco",
+						"subtitle": "E-commerce",
+						"tags": "Wordpress — Woocommerce",
+						"img": "project-riverco.png"
 					}
 				]
 			},

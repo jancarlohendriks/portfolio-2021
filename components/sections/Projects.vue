@@ -9,10 +9,10 @@
         :key="index"
         class="col-12 col-md-4"
       >
-        <div class="card" @click.prevent="$root.$emit('modal-open', 0)">
+        <div class="card" @click.prevent="$root.$emit('modal-open', index)">
           <img
             class="card-img-top"
-            :src="`assets/img/project_${index + 1}.jpg`"
+            :src="`assets/img/${project.img}`"
             :alt="project.title"
           />
           <div class="card-body">

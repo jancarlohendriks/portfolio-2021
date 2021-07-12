@@ -16,15 +16,6 @@
 					<strong class="contact-label">Social</strong>
 					<a href="https://www.facebook.com/">Facebook</a><br />
 					<a href="https://www.linked.com/">LinekdIn</a><br />
-					<a href="https://www.twitter.com/">Twitter</a>
-				</div>
-			</div>
-			<div class="col-12 col-md-4">
-				<div class="contact">
-					<strong class="contact-label">Address</strong>
-					1234 Houston Street<br />
-					New York<br />
-					NY 123456<br />
 				</div>
 			</div>
 		</div>

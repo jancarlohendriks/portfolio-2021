@@ -4,9 +4,9 @@ body {
 
 html, body, .page-body {
 	scroll-behavior: smooth;
-	@media (min-width: 768px) {
-		scroll-snap-type: y mandatory;
-	}
+	// @media (min-width: 768px) {
+	// 	scroll-snap-type: y mandatory;
+	// }
 }
 
 .page-body {
@@ -18,8 +18,8 @@ html, body, .page-body {
 	}
 }
 
-.section {
-	@media (min-width: 768px) {
-		scroll-snap-align: start;
-	}
-}
+// .section {
+// 	@media (min-width: 768px) {
+// 		scroll-snap-align: start;
+// 	}
+// }
