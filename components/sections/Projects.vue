@@ -8,8 +8,10 @@
         v-for="(project, index) in projects"
         :key="index"
         class="col-12 col-md-4"
+				@mouseenter="$root.$emit('anchor-hover')"
+				@mouseleave="$root.$emit('anchor-hover')"
       >
-        <div class="card" @click.prevent="$root.$emit('modal-open', index)">
+        <div class="card" @click="$root.$emit('modal-open', index)">
           <img
             class="card-img-top"
             :src="`assets/img/${project.img}`"

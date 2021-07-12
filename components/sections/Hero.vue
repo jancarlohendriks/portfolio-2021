@@ -4,6 +4,8 @@
       src="assets/img/avatar.png"
       class="jumbotron-img animation-translate animation-item-1"
       alt="Avatar"
+      @mouseenter="$root.$emit('anchor-hover')"
+      @mouseleave="$root.$emit('anchor-hover')"
     />
     <h1
       class="
@@ -11,8 +13,13 @@
         animation-translate animation-item-2
       "
     >
-      <span v-for="(name, index) in content.name" :key="index">
-        {{ name }}<br>
+      <span
+        v-for="(name, index) in content.name"
+        :key="index"
+        @mouseenter="$root.$emit('anchor-hover')"
+        @mouseleave="$root.$emit('anchor-hover')"
+      >
+        {{ name }}<br />
       </span>
     </h1>
     <p class="lead animation-translate animation-item-3">

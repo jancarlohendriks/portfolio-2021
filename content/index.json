@@ -84,7 +84,9 @@
 				"id": 5,
 				"fileName": "Contact",
 				"navName": "Contact",
-				"title": "Contact"
+				"title": "Contact",
+				"email": "hello@jancarlohendriks.com",
+				"phone": "+31(0)630134464"
 			}
 		]
 	}

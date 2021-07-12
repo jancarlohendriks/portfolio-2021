@@ -7,8 +7,8 @@
 			<div class="col-12 col-md-4">
 				<div class="contact">
 					<strong class="contact-label">Stay in touch</strong>
-					<a href="mailto:john@wilson.com">john@wilson.com</a><br />
-					<a href="tel:+420652887351">+420 652 887 351</a>
+					<a href="mailto:john@wilson.com">{{ content.email }}</a><br />
+					<a href="tel:+420652887351">{{ content.phone }}</a>
 				</div>
 			</div>
 			<div class="col-12 col-md-4">
@@ -19,7 +19,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="row">
+		<!-- <div class="row">
 			<div class="col-12 col-xl-9">
 				<h3 class="section-subtitle animation-translate animation-item-3">
 					Leave a message
@@ -75,6 +75,16 @@
 					<button type="submit" class="btn btn-primary">Send</button>
 				</form>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </template>
+<script>
+export default {
+  props: {
+    content: {
+      type: Object,
+      required: true,
+    },
+  },
+}
+</script>

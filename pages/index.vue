@@ -1,6 +1,6 @@
 <template>
   <div
-		id="page-body"
+    id="page-body"
     class="page-body with-header"
     :class="{ 'modal-open': modalOpen, 'sections-nav-in': menuOpen }"
   >
@@ -13,12 +13,8 @@
           justify-content-between
         "
       >
-        <a href="/" class="header-brand">
-          Personal Portfolio
-        </a>
-        <a href="/" class="header-brand">
-          Jan Carlo Hendriks
-        </a>
+        <a href="/" class="header-brand"> Personal Portfolio </a>
+        <a href="/" class="header-brand"> Jan Carlo Hendriks </a>
         <button
           @click="menuOpen = !menuOpen"
           class="sections-nav-toggler"
@@ -32,7 +28,12 @@
       </div>
     </header>
 
-    <nav class="sections-nav-container">
+    <nav
+			ref="nav"
+			class="sections-nav-container"
+			@mouseenter="$root.$emit('anchor-hover')"
+			@mouseleave="$root.$emit('anchor-hover')"
+		>
       <ul id="sections-nav" class="nav sections-nav sections-nav-animated">
         <li
           v-for="(section, index) in content.sections"
@@ -42,16 +43,22 @@
           <a
             :href="'#' + section.navName"
             class="nav-link sections-nav-link goto-section"
-            :class="{ 'active': index == selected }"
+            :class="{ active: index == selected }"
           >
+						<!-- @mousemove="$root.$emit('anchor-hover')" -->
             <span class="sections-nav-counter">{{ '0' + (index + 1) }}</span>
             {{ section.navName }}
           </a>
         </li>
         <li class="sections-nav-item">
           <div class="sections-nav-info">
-            <a :href="'mailto:' + content.personal.email">{{ content.personal.email }}</a><br />
-            <a :href="'tel:' + content.personal.phone">{{ content.personal.phone }}</a>
+            <a :href="'mailto:' + content.personal.email">{{
+              content.personal.email
+            }}</a
+            ><br />
+            <a :href="'tel:' + content.personal.phone">{{
+              content.personal.phone
+            }}</a>
           </div>
         </li>
       </ul>
@@ -77,13 +84,12 @@
 
     <Modals v-show="modalOpen" :project="project" />
 
+    <span id="cursor" ref="cursor"></span>
   </div>
 </template>
 
 <script>
 import Section from '~/components/Section.vue'
-
-var isScrolling
 
 export default {
   components: {
@@ -98,8 +104,16 @@ export default {
       modalOpen: false,
       selected: null,
       observer: null,
-			isScrolling: false,
-			project: null
+      isScrolling: false,
+      project: null,
+      cursorPos: {
+        x: 0,
+        y: 0,
+      },
+      mousePos: {
+        x: 0,
+        y: 0,
+      },
     }
   },
 
@@ -113,50 +127,98 @@ export default {
       return this.$refs.sections.children
     },
     pageBody() {
-			return document.getElementById('page-body')
-		},
+      return document.getElementById('page-body')
+    },
     projects() {
       const projects = this.content.sections.filter(
         (e) => e.fileName == 'Projects'
       )[0].projects
       return projects
-    }
+    },
   },
 
-	created() {
-		this.project = this.projects[0]
-		// const newHash = this.content.sections[0].navName
-		// window.location.hash = newHash
+	beforeMount() {
+		history.pushState("", document.title, window.location.pathname);
 	},
+
+  created() {
+    this.project = this.projects[0]
+    // const newHash = this.content.sections[0].navName
+    // window.location.hash = newHash
+  },
 
   mounted() {
     this.initObserver()
     this.observeSections()
     this.pageBody.addEventListener('scroll', this.onScroll)
-    this.$root.$on('next-section', (index) => { this.goTo(index) })
+    this.$root.$on('next-section', (index) => {
+      this.goTo(index)
+    })
     this.$root.$on('modal-open', (e) => {
-			this.project = this.projects[e]
-			this.modalOpen = true
-		})
-    this.$root.$on('modal-close', () => { this.modalOpen = false })
+      this.project = this.projects[e]
+      this.modalOpen = true
+    })
+    this.$root.$on('modal-close', () => {
+      this.modalOpen = false
+    })
+    this.$root.$on('anchor-hover', () => {
+			const cursor = this.$refs.cursor
+			cursor.classList.toggle('active')
+			// console.log(cursor);
+    })
+
+		// MOUSE MOVE
+
+    this.pageBody.addEventListener('mousemove', (e) => {
+      mouse.x = e.pageX
+      mouse.y = e.pageY
+    })
+
+    const cursor = this.$refs.cursor
+
+    var beepos = {
+      x: 0,
+      y: 0,
+    }
+
+    setInterval(() => {
+      var distX = mouse.x - beepos.x
+      var distY = mouse.y - beepos.y
+
+      beepos.x += distX / 2
+      beepos.y += distY / 2
+
+      cursor.style.left = beepos.x - cursor.offsetWidth / 2 + 'px'
+      cursor.style.top = beepos.y - cursor.offsetHeight / 2 + 'px'
+    }, 50)
+
+    var mouse = { x: 0, y: 0 }
+
+		// let anchors = [
+		// 	this.$refs.nav
+		// ]
+		
+		// anchors.forEach(anchor => {
+		// 	anchor.addEventListener('mouseover', () => {
+		// 		cursor.classList.toggle('active')
+		// 	})
+		// })
+
   },
 
   methods: {
-		onScroll(e) {
-			const newHash = this.content.sections[this.selected].navName
-			history.replaceState( {} , newHash, `/#${newHash}` )
-			// window.clearTimeout(isScrolling)
-			// isScrolling = setTimeout(() => {
-			// 	const newHash = this.content.sections[this.selected].navName
-			// 	window.location.hash = newHash
-      // }, 66)
-		},
+    onScroll() {
+      const newHash = this.content.sections[this.selected].navName
+      history.replaceState({}, newHash, `/#${newHash}`)
+    },
 
-		goTo(index) {
-			if (this.selected == index) { return }
-			const newSection = this.sections[index]
-			newSection.scrollIntoView()
-		},
+    goTo(index) {
+      if (this.selected == index) {
+        return
+      }
+      const newSection = this.sections[index]
+      newSection.scrollIntoView()
+    },
 
     observeSections() {
       this.sections.forEach((section) => {

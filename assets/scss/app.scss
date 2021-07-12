@@ -1,18 +1,42 @@
 $color-primary: #f3f2f7;
 $color-secondary: #171717;
-// $color-primary: #e2725b;
-// $color-secondary: #fff;
 $scrollbar-width: .45rem;
+
+::selection {
+	color: $color-primary;
+	background-color: rgba($color-secondary, .5);
+}
+
+#cursor {
+	position: fixed;
+	width: 1rem;
+	height: 1rem;
+	border-radius: 1rem;
+	background-color: #fff;
+	pointer-events: none;
+	z-index: 9999;
+	transition-duration: 100ms;
+	transition-timing-function: ease-in-out;
+	mix-blend-mode: exclusion;
+	will-change: auto;
+	&.active {
+		width: 10rem;
+		height: 10rem;
+		border-radius: 10rem;
+	}
+}
 
 @mixin heading() {
 	font-family: proxima-nova, sans-serif;
-	font-weight: 800;
+	font-weight: 700;
 	font-style: normal;
-	letter-spacing: -.01em;
+	// letter-spacing: 0.035em;
+	// letter-spacing: -.01em;
 }
 
 @mixin body() {
-	font-family: roc-grotesk, sans-serif;
+	// font-family: roc-grotesk, sans-serif;
+	font-family: Montserrat, sans-serif;
 	font-weight: 300;
 	font-style: normal;
 }
@@ -114,6 +138,8 @@ html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	// cursor: url("data:image/svg+xml,🔥");
+	// background-image: url("data:image/svg+xml,🔥");
 }
 article,
 aside,
@@ -279,6 +305,7 @@ th {
 label {
   display: inline-block;
   margin-bottom: 0;
+	@include heading();
 }
 button {
   border-radius: 0;
@@ -412,6 +439,8 @@ h6 {
 h1 {
   font-size: 56px;
   font-size: 4rem;
+	// font-weight: 700;
+	// letter-spacing: -.01em;
 }
 .h2,
 h2 {
@@ -437,7 +466,7 @@ h6 {
   font-size: 14px;
   font-size: 1rem;
 	@include heading();
-  font-weight: 700;
+  // font-weight: 700;
 	letter-spacing: .045em;
 }
 .display-1 {
@@ -10576,6 +10605,7 @@ input:-webkit-autofill:hover {
   -webkit-transition: color 0.15s ease-in-out;
   transition: color 0.15s ease-in-out;
 	@include heading();
+	font-weight: 700;
 }
 .sections-nav-link:before {
   content: '';
@@ -10597,7 +10627,8 @@ input:-webkit-autofill:hover {
   text-decoration: none;
 }
 .sections-nav-link:hover:not(.active) {
-  color: rgba($color-secondary, 0.5);
+	color: inherit;
+  // color: rgba($color-secondary, 0.5);
 }
 .sections-nav-link:hover:not(.active):before {
   -webkit-transform: scaleX(1);
@@ -10945,18 +10976,15 @@ input:-webkit-autofill:hover {
 .card:hover {
   text-decoration: none;
   color: $color-secondary;
-  -webkit-transform: translateY(-0.5rem);
-  -ms-transform: translateY(-0.5rem);
   transform: translateY(-0.5rem);
 }
 .card:hover .card-img-top {
   opacity: 1;
 }
-.card-img-top {
-  -webkit-transition: opacity 0.15s linear;
-  transition: opacity 0.15s linear;
-  opacity: 0.75;
-}
+// .card-img-top {
+//   transition: opacity 0.15s linear;
+//   opacity: 0.75;
+// }
 .card-body {
   padding: 1.5rem 0;
 }
@@ -10990,6 +11018,8 @@ input:-webkit-autofill:hover {
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
+	@include heading();
+	letter-spacing: .035em;
 }
 .breadcrumb {
   display: -webkit-box;
@@ -11224,6 +11254,11 @@ a.badge-danger:focus {
   margin-bottom: 2rem;
   background-color: rgba(0, 0, 0, 0);
   border-radius: 0.75rem;
+	
+	&-img, h1 > span {
+		// cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" x="40" width="30" height="40" style="font-size: 20px;"><text alignment-baseline="middle" text-anchor="middle" x="20" y="20">🔥</text></svg>'), auto;
+		cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" style="font-size: 20px;"><text y="20">🔥</text></svg>'), auto;
+	}
 }
 @media (min-width: 576px) {
   .jumbotron {
@@ -11420,8 +11455,9 @@ a.badge-danger:focus {
 .progress-label {
   display: block;
   margin-bottom: 0.75rem;
-  font-weight: 700;
   text-transform: uppercase;
+	@include heading();
+  font-weight: 700;
 }
 .progress-animated,
 .progress-animated .progress-bar {
@@ -12519,6 +12555,7 @@ a.badge-danger:focus {
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
+	@include heading();
 }
 .section-next-icon {
   display: inline-block;
@@ -13017,6 +13054,7 @@ a.badge-danger:focus {
   font-size: 0.875rem;
   text-transform: uppercase;
   color: rgba($color-secondary, 0.6);
+	@include heading();
 }
 .animation {
   overflow: hidden;
