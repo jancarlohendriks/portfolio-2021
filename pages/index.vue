@@ -84,7 +84,7 @@
 
     <Modals v-show="modalOpen" :project="project" />
 
-    <span id="cursor" ref="cursor"></span>
+    <span id="cursor" ref="cursor" :style="cursorCircle"></span>
   </div>
 </template>
 
@@ -106,6 +106,10 @@ export default {
       observer: null,
       isScrolling: false,
       project: null,
+			xChild: 0,
+      yChild: 0,
+      xParent: 0,
+      yParent: 0,
       cursorPos: {
         x: 0,
         y: 0,
@@ -135,6 +139,11 @@ export default {
       )[0].projects
       return projects
     },
+
+		cursorCircle() {
+      // return `transform: translateX(${this.xParent}px) translateY(${this.yParent}px) translateZ(0) translate3d(0, 0, 0);`
+      return `top:${this.yParent}px;left:${this.xParent}px;`
+    },
   },
 
 	beforeMount() {
@@ -150,49 +159,44 @@ export default {
   mounted() {
     this.initObserver()
     this.observeSections()
+		this.pageBody.addEventListener("mousemove", this.moveCursor);
     this.pageBody.addEventListener('scroll', this.onScroll)
-    this.$root.$on('next-section', (index) => {
-      this.goTo(index)
-    })
+    this.$root.$on('next-section', (index) => { this.goTo(index) })
+    this.$root.$on('anchor-hover', () => { this.$refs.cursor.classList.toggle('active') })
+		this.$root.$on('modal-close', () => { this.modalOpen = false })
     this.$root.$on('modal-open', (e) => {
       this.project = this.projects[e]
       this.modalOpen = true
     })
-    this.$root.$on('modal-close', () => {
-      this.modalOpen = false
-    })
-    this.$root.$on('anchor-hover', () => {
-			const cursor = this.$refs.cursor
-			cursor.classList.toggle('active')
-			// console.log(cursor);
-    })
 
 		// MOUSE MOVE
 
-    this.pageBody.addEventListener('mousemove', (e) => {
-      mouse.x = e.pageX
-      mouse.y = e.pageY
-    })
+    // this.pageBody.addEventListener('mousemove', (e) => {
+    //   mouse.x = e.pageX
+    //   mouse.y = e.pageY
+    // })
 
-    const cursor = this.$refs.cursor
+    // const cursor = this.$refs.cursor
 
-    var beepos = {
-      x: 0,
-      y: 0,
-    }
+    // var beepos = {
+    //   x: 0,
+    //   y: 0,
+    // }
 
-    setInterval(() => {
-      var distX = mouse.x - beepos.x
-      var distY = mouse.y - beepos.y
+    // setInterval(() => {
+    //   var distX = mouse.x - beepos.x
+    //   var distY = mouse.y - beepos.y
 
-      beepos.x += distX / 2
-      beepos.y += distY / 2
+    //   beepos.x += distX / 2
+    //   beepos.y += distY / 2
 
-      cursor.style.left = beepos.x - cursor.offsetWidth / 2 + 'px'
-      cursor.style.top = beepos.y - cursor.offsetHeight / 2 + 'px'
-    }, 50)
+    //   cursor.style.left = beepos.x - cursor.offsetWidth / 2 + 'px'
+    //   cursor.style.top = beepos.y - cursor.offsetHeight / 2 + 'px'
+    // }, 50)
 
-    var mouse = { x: 0, y: 0 }
+    // var mouse = { x: 0, y: 0 }
+
+
 
 		// const pageBody = this.pageBody
 
@@ -218,6 +222,15 @@ export default {
   },
 
   methods: {
+
+		moveCursor(e) {
+			const cursor = this.$refs.cursor
+			setTimeout(() => {
+				this.xParent = e.pageX - (cursor.offsetWidth / 2)
+				this.yParent = e.pageY - (cursor.offsetWidth / 2)
+			}, 120);
+		},
+
     onScroll() {
       const newHash = this.content.sections[this.selected].navName
       history.replaceState({}, newHash, `/#${newHash}`)

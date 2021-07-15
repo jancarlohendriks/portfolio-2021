@@ -8,12 +8,24 @@ $scrollbar-width: .45rem;
 }
 
 #cursor {
+	pointer-events: none;
+	user-select: none;
+	top: 0;
+	left: 0;
 	position: fixed;
 	width: 1rem;
 	height: 1rem;
-	border-radius: 1rem;
+	// border: 2px solid #fff;
+	border-radius: 100%;
+	// z-index: 9999;
+	// backface-visibility: hidden;
+	transition: opacity .6s ease;
+	// position: fixed;
+	// width: 1rem;
+	// height: 1rem;
+	// border-radius: 1rem;
 	background-color: #fff;
-	pointer-events: none;
+	// pointer-events: none;
 	z-index: 9999;
 	transition-duration: 100ms;
 	transition-timing-function: ease-in-out;
@@ -22,7 +34,6 @@ $scrollbar-width: .45rem;
 	&.active {
 		width: 10rem;
 		height: 10rem;
-		border-radius: 10rem;
 	}
 }
 
