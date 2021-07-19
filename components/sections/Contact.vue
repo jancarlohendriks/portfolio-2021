@@ -1,25 +1,34 @@
 <template>
   <div>
-		<h2 class="section-title animation-translate-overline animation-item-1">
-			Contact
-		</h2>
-		<div class="row mb-10 animation-translate animation-item-2">
-			<div class="col-12 col-md-4">
-				<div class="contact">
-					<strong class="contact-label">Stay in touch</strong>
-					<a href="mailto:john@wilson.com">{{ content.email }}</a><br />
-					<a href="tel:+420652887351">{{ content.phone }}</a>
-				</div>
-			</div>
-			<div class="col-12 col-md-4">
-				<div class="contact">
-					<strong class="contact-label">Social</strong>
-					<a href="https://www.facebook.com/">Facebook</a><br />
-					<a href="https://www.linked.com/">LinekdIn</a><br />
-				</div>
-			</div>
-		</div>
-		<!-- <div class="row">
+    <h2 class="section-title animation-translate-overline animation-item-1">
+      {{ content.title }}
+    </h2>
+    <div class="row mb-10 animation-translate animation-item-2">
+      <div
+        class="col-12 col-md-4"
+        @mouseenter="$root.$emit('anchor-hover')"
+        @mouseleave="$root.$emit('anchor-hover')"
+      >
+        <div class="contact">
+          <strong class="contact-label">Stay in touch</strong>
+          <a href="mailto:john@wilson.com">{{ content.email }}</a
+          ><br />
+          <a href="tel:+420652887351">{{ content.phone }}</a>
+        </div>
+      </div>
+      <div
+        class="col-12 col-md-4"
+        @mouseenter="$root.$emit('anchor-hover')"
+        @mouseleave="$root.$emit('anchor-hover')"
+      >
+        <div class="contact">
+          <strong class="contact-label">Social</strong>
+          <a href="https://www.facebook.com/">Facebook</a><br />
+          <a href="https://www.linked.com/">LinekdIn</a><br />
+        </div>
+      </div>
+    </div>
+    <!-- <div class="row">
 			<div class="col-12 col-xl-9">
 				<h3 class="section-subtitle animation-translate animation-item-3">
 					Leave a message
@@ -76,7 +85,7 @@
 				</form>
 			</div>
 		</div> -->
-	</div>
+  </div>
 </template>
 <script>
 export default {

@@ -152,8 +152,6 @@ export default {
 
   created() {
     this.project = this.projects[0]
-    // const newHash = this.content.sections[0].navName
-    // window.location.hash = newHash
   },
 
   mounted() {
@@ -168,57 +166,6 @@ export default {
       this.project = this.projects[e]
       this.modalOpen = true
     })
-
-		// MOUSE MOVE
-
-    // this.pageBody.addEventListener('mousemove', (e) => {
-    //   mouse.x = e.pageX
-    //   mouse.y = e.pageY
-    // })
-
-    // const cursor = this.$refs.cursor
-
-    // var beepos = {
-    //   x: 0,
-    //   y: 0,
-    // }
-
-    // setInterval(() => {
-    //   var distX = mouse.x - beepos.x
-    //   var distY = mouse.y - beepos.y
-
-    //   beepos.x += distX / 2
-    //   beepos.y += distY / 2
-
-    //   cursor.style.left = beepos.x - cursor.offsetWidth / 2 + 'px'
-    //   cursor.style.top = beepos.y - cursor.offsetHeight / 2 + 'px'
-    // }, 50)
-
-    // var mouse = { x: 0, y: 0 }
-
-
-
-		// const pageBody = this.pageBody
-
-		// pageBody.addEventListener('DOMMouseScroll', onMouseWheel, false);
-		// pageBody.onmousewheel = document.onmousewheel = onMouseWheel; // IE
-
-		// function onMouseWheel(event) {
-		// 		event.stopPropagation();
-		// 		event.preventDefault();
-		// 		event.cancelBubble = true;
-
-		// 		pageBody.scroll({
-		// 			top: pageBody.scrollTop + event.deltaY * 5,
-		// 			left: 0,
-		// 			behavior: 'smooth'
-		// 		});
-
-		// 		console.log(event);
-
-		// 		return false;
-		// }
-
   },
 
   methods: {

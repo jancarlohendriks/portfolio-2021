@@ -9,11 +9,11 @@
     </div>
     <div
       class="section-footer animation-translate animation-item-4"
-      @mouseenter="$root.$emit('anchor-hover')"
-      @mouseleave="$root.$emit('anchor-hover')"
     >
       <div
         class="section-next goto-section"
+				@mouseenter="$root.$emit('anchor-hover')"
+      	@mouseleave="$root.$emit('anchor-hover')"
         @click="$root.$emit('next-section', count.index + 1)"
       >
         <span class="section-next-counter">

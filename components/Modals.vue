@@ -64,6 +64,7 @@
                     :src="`assets/img/${project.img}`"
                     alt="Nanovo"
                   />
+									<a :href="project.url">Open project in new tab</a>
                 </div>
               </main>
             </article>
