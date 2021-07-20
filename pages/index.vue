@@ -12,8 +12,8 @@
           justify-content-between
         "
       >
-        <a href="/" class="header-brand"> Personal Portfolio </a>
-        <a href="/" class="header-brand"> Jan Carlo Hendriks </a>
+        <span class="header-brand"> Personal Portfolio </span>
+        <span class="header-brand"> Jan Carlo Hendriks </span>
         <button
           @click="menuOpen = !menuOpen"
           class="sections-nav-toggler"

@@ -41,7 +41,10 @@ export default {
 		}
 	},
 	async created() {
-		this.projects = await this.$content('projects').only(['title', 'subtitle', 'tags', 'img', 'slug']).fetch()
+		this.projects = await this.$content('projects')
+			.only(['title', 'subtitle', 'tags', 'img', 'slug'])
+			.sortBy('slug', 'asc')
+			.fetch()
 	}
 }
 </script>

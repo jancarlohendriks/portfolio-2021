@@ -6,4 +6,6 @@ img: project-bert.png
 url: https://www.studiobertgovers.nl/
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+Studio Bert Govers is an award winning Design studio (Goed Industrieel Ontwerp, Reddot Design Award, ...)
+
+The design was encommended by the designer himself.

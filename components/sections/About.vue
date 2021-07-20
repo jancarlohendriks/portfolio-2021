@@ -5,20 +5,20 @@
         {{ content.title }}
       </h2>
       <article class="article animation-translate animation-item-2">
-        <p v-for="(text, index) in content.text" :key="index">
-					{{ text }}
-        </p>
+				<nuxt-content :document="content" />
       </article>
     </div>
   </div>
 </template>
 <script>
 export default {
-	props: {
-		content: {
-			type: Object,
-			required: true
+	data() {
+		return {
+			content: []
 		}
+	},
+	async created() {
+		this.content = await this.$content('', 'about').fetch()
 	}
 }
 </script>

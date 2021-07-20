@@ -216,6 +216,7 @@
     url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='41.414' height='41.414'%3E%3Cg fill='none' stroke='%23000' stroke-width='2'%3E%3Cpath d='M40.707.707l-40 40M.707.707l40 40'/%3E%3C/g%3E%3C/svg%3E")
     no-repeat 50%/100% 100%;
   border: 0;
+	cursor: pointer;
 }
 .modal-close:hover {
   text-decoration: none;
