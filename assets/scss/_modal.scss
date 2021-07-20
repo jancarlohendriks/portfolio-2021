@@ -19,13 +19,14 @@
 
 
 
-.modal-open {
-  overflow: hidden;
-}
-.modal-open .modal {
-  overflow-x: hidden;
-  overflow-y: auto;
-}
+// .modal-open {
+//   overflow: hidden;
+// }
+// .modal-open .modal {
+//   overflow-x: hidden;
+//   overflow-y: auto;
+// }
+
 .modal {
   position: fixed;
   top: 0;
@@ -34,7 +35,8 @@
   display: none;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+	overflow-y: auto;
+  // overflow: hidden;
   outline: 0;
 	background-color: rgba($color-primary, .975);
 }
@@ -92,9 +94,6 @@
 }
 .modal-dialog-centered.modal-dialog-scrollable {
   flex-direction: column;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   height: 100%;
 }
