@@ -7,7 +7,7 @@ export default {
 
 	generate: {
 		routes: [
-			'/',
+			'/about',
 			'/bert-govers',
 			'/mooi',
 			'/riverco',
