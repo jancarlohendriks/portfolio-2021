@@ -1,6 +1,8 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
 	// ssr: false,
+	loading: false,
+
   head: {
     title: 'portfolio-2021',
     htmlAttrs: {
@@ -14,10 +16,6 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-			// {
-			// 	rel: 'stylesheet',
-			// 	href: 'https://fonts.googleapis.com/css?family=Montserrat:400,700,800&amp;display=swap'
-			// }
 			{
 				rel: 'stylesheet',
 				href: 'https://use.typekit.net/abt6rwi.css'
@@ -38,30 +36,19 @@ export default {
   css: ['~/assets/scss/app.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-		// { src: '~/plugins/ScrollMagic.js', mode: 'client' },
-		// {
-    //   src: '~/plugins/OnScreen.js',
-    //   ssr: false,
-    //   mode: 'client'
-    // },
-  ],
+  plugins: [],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [
-  ],
+  buildModules: [],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-		'@nuxt/content'
-  ],
+  modules: ['@nuxt/content'],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-  },
+  build: {},
 
 	/*
   ** Router configuration
@@ -85,9 +72,9 @@ export default {
       if (to.hash) {
         let el = await findEl(to.hash)
         if ('scrollBehavior' in document.documentElement.style) {
-          return window.scrollTo({ top: el.offsetTop, behavior: 'smooth' })
+          return document.body.scrollTo({ top: el.offsetTop, behavior: 'smooth' })
         } else {
-          return window.scrollTo(0, el.offsetTop)
+          return document.body.scrollTo(0, el.offsetTop)
         }
       }
 

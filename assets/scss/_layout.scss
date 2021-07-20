@@ -4,9 +4,6 @@ body {
 
 html, body, .page-body {
 	scroll-behavior: smooth;
-	// @media (min-width: 768px) {
-	// 	scroll-snap-type: y mandatory;
-	// }
 }
 
 .page-body {
@@ -17,9 +14,3 @@ html, body, .page-body {
 		overflow: hidden;
 	}
 }
-
-// .section {
-// 	@media (min-width: 768px) {
-// 		scroll-snap-align: start;
-// 	}
-// }

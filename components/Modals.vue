@@ -2,8 +2,8 @@
   <!-- <transition name="fade" :duration="1000"> -->
   <transition name="fade">
     <article id="modal-project-1" class="modal fade show">
-			<!-- <div class="modal-backdrop fade show"></div> -->
-      <div class="modal-dialog modal-fluid">
+			Hello
+      <!-- <div class="modal-dialog modal-fluid">
         <div class="modal-content">
           <div class="modal-header">
             &nbsp;
@@ -25,7 +25,7 @@
               </div>
               <main class="row flex-column-reverse flex-lg-row">
                 <div class="col-12 col-lg-6">
-                  <p v-for="(par, index) in project.description" :key="index">{{ par }}</p>
+									<nuxt-content :document="project" />
                 </div>
                 <div class="col-12 col-lg-6">
                   <img
@@ -39,26 +39,24 @@
             </article>
           </div>
         </div>
-      </div>
+      </div> -->
     </article>
   </transition>
 </template>
 
 <script>
 export default {
-  props: {
-    project: {
-      type: Object,
-      required: true,
-    },
-    isOpen: {
-      type: Boolean,
-      default: false,
-    },
-  },
-  mounted() {
-    // console.log(this.project);
-  },
+	props: ['project', 'isOpen']
+  // props: {
+  //   project: {
+  //     type: Object,
+  //     required: true,
+  //   },
+  //   isOpen: {
+  //     type: Boolean,
+  //     default: false,
+  //   },
+  // }
 }
 </script>
 

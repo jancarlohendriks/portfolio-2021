@@ -4,6 +4,7 @@
       Projects
     </h2>
     <div class="row animation-translate animation-item-2">
+			<!-- {{ projects }} -->
       <div
         v-for="(project, index) in projects"
         :key="index"
@@ -11,7 +12,8 @@
 				@mouseenter="$root.$emit('anchor-hover')"
 				@mouseleave="$root.$emit('anchor-hover')"
       >
-        <div class="card" @click="$root.$emit('modal-open', index)">
+        <!-- <div class="card" @click="$root.$emit('modal-open', index)"> -->
+				<nuxt-link class="card" :to="'/' + project.slug">
           <img
             class="card-img-top"
             :src="`assets/img/${project.img}`"
@@ -22,7 +24,7 @@
             <h4 class="card-subtitle">{{ project.subtitle }}</h4>
             <p class="card-tags">{{ project.tags }}</p>
           </div>
-        </div>
+        </nuxt-link>
       </div>
     </div>
   </div>
@@ -35,13 +37,18 @@ export default {
       required: true,
     },
   },
-  computed: {
-    projects() {
-      return this.content.projects
-    },
-  },
-  mounted() {
-    console.log(this.projects[0].title)
-  },
+	data() {
+		return {
+			projects: []
+		}
+	},
+	async created() {
+		this.projects = await this.$content('projects').only(['title', 'subtitle', 'tags', 'img', 'slug']).fetch()
+	}
+  // async mounted() {
+  //   this.projects = await this.$content('projects')
+	// 	.only(['title', 'subtitle', 'tags', 'img'])
+	// 	.fetch()
+  // }
 }
 </script>

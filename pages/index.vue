@@ -1,9 +1,9 @@
 <template>
+    <!-- id="page-body" -->
   <div
-    id="page-body"
     class="page-body with-header"
-    :class="{ 'modal-open': modalOpen, 'sections-nav-in': menuOpen }"
   >
+    <!-- :class="{ 'modal-open': modalOpen, 'sections-nav-in': menuOpen }" -->
     <header class="header">
       <div
         class="
@@ -44,6 +44,7 @@
             :href="'#' + section.navName"
             class="nav-link sections-nav-link goto-section"
             :class="{ active: index == selected }"
+						@click="menuOpen = false"
           >
             <span class="sections-nav-counter">{{ '0' + (index + 1) }}</span>
             {{ section.navName }}
@@ -81,7 +82,7 @@
       </div>
     </main>
 
-    <Modals v-show="modalOpen" :project="project" />
+    <!-- <Modals v-show="modalOpen" :project="project" /> -->
 
     <span id="cursor" ref="cursor" :style="cursorCircle"></span>
   </div>
@@ -93,18 +94,28 @@ import Section from '~/components/Section.vue'
 export default {
   components: {
     Section,
-    Modals: () =>
-      import(/* webpackChunkName: "Modals" */ '~/components/Modals.vue'),
+    // Modals: () =>
+    //   import(/* webpackChunkName: "Modals" */ '~/components/Modals.vue'),
   },
+
+	// transition: {
+  //   afterEnter(el) {
+  //     const hash = location.hash
+	// 		if(hash) {
+	// 			document.querySelector(hash).scrollIntoView({behavior: "auto"})
+	// 		}
+  //   }
+  // },
 
   data() {
     return {
       menuOpen: false,
-      modalOpen: false,
+      // modalOpen: false,
       selected: null,
       observer: null,
       isScrolling: false,
       project: null,
+			isMobile: true,
 			xChild: 0,
       yChild: 0,
       xParent: 0,
@@ -129,44 +140,61 @@ export default {
     sections() {
       return this.$refs.sections.children
     },
-    pageBody() {
-      return document.getElementById('page-body')
-    },
-    projects() {
-      const projects = this.content.sections.filter(
-        (e) => e.fileName == 'Projects'
-      )[0].projects
-      return projects
-    },
+    // pageBody() {
+    //   return document.getElementById('page-body')
+    // },
+    // projects() {
+    //   const projects = this.content.sections.filter(
+    //     (e) => e.fileName == 'Projects'
+    //   )[0].projects
+    //   return projects
+    // },
 
 		cursorCircle() {
       return `top:${this.yParent}px;left:${this.xParent}px;`
     },
   },
 
-	beforeMount() {
-		history.pushState("", document.title, window.location.pathname);
-	},
+	// beforeMount() {
+	// 	document.querySelector(location.hash).scrollIntoView()
+	// },
 
-  created() {
-    this.project = this.projects[0]
-  },
+  // created() {
+  //   this.project = this.projects[0]
+  // },
 
   mounted() {
+		const hash = location.hash
+		if(hash) {
+			document.querySelector(hash).scrollIntoView()
+		}
+		this.onResize
+		window.addEventListener("resize", this.onResize);
     this.initObserver()
     this.observeSections()
-		this.pageBody.addEventListener("mousemove", this.moveCursor);
-    this.pageBody.addEventListener('scroll', this.onScroll)
+		window.addEventListener("mousemove", this.moveCursor);
+    window.addEventListener('scroll', this.onScroll)
     this.$root.$on('next-section', (index) => { this.goTo(index) })
-    this.$root.$on('anchor-hover', () => { this.$refs.cursor.classList.toggle('active') })
-		this.$root.$on('modal-close', () => { this.modalOpen = false })
+    this.$root.$on('anchor-hover', () => { this.onAnchorHover })
+		// this.$root.$on('modal-close', () => { this.modalOpen = false })
     this.$root.$on('modal-open', (e) => {
       this.project = this.projects[e]
-      this.modalOpen = true
+      // this.modalOpen = true
     })
   },
 
   methods: {
+
+		onAnchorHover() {
+			const cursor = this.$refs.cursor
+			console.log('cursor');
+			cursor.classList.toggle('active')
+		},
+
+		onResize() {
+			var mql = window.matchMedia('(min-width: 990px)');
+			mql.matches ? this.isMobile = false : this.isMobile = true
+		},
 
 		moveCursor(e) {
 			const cursor = this.$refs.cursor
@@ -177,8 +205,8 @@ export default {
 		},
 
     onScroll() {
-      const newHash = this.content.sections[this.selected].navName
-      history.replaceState({}, newHash, `/#${newHash}`)
+      // const newHash = this.content.sections[this.selected].navName
+      // history.replaceState({}, newHash, `/#${newHash}`)
     },
 
     goTo(index) {
@@ -196,7 +224,7 @@ export default {
     },
 
     initObserver() {
-      const options = { threshold: [0.5] }
+      let options = { threshold: [0.3] }
       this.observer = new IntersectionObserver((entries) => {
         entries.filter((e) => {
           const selected = [...this.sections].indexOf(e.target)

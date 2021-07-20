@@ -7,6 +7,14 @@ $scrollbar-width: .45rem;
 	background-color: #ff0000;
 }
 
+// .page-enter-active, .page-leave-active {
+//   transition: all .25s ease-out;
+// }
+// .page-enter, .page-leave-active {
+//   opacity: 0;
+//   transform-origin: 50% 50%;
+// }
+
 #cursor {
 	position: fixed;
 	display: none;
@@ -884,12 +892,10 @@ h6 {
   }
 }
 .fade {
-  -webkit-transition: opacity 0.15s linear;
   transition: opacity 0.15s linear;
 }
 @media (prefers-reduced-motion: reduce) {
   .fade {
-    -webkit-transition: none;
     transition: none;
   }
 }
@@ -903,12 +909,10 @@ h6 {
   position: relative;
   height: 0;
   overflow: hidden;
-  -webkit-transition: height 0.35s ease;
   transition: height 0.35s ease;
 }
 @media (prefers-reduced-motion: reduce) {
   .collapsing {
-    -webkit-transition: none;
     transition: none;
   }
 }
