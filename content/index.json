@@ -34,7 +34,7 @@
 				"fileName": "References",
 				"navName": "Skills",
 				"title": "Skills",
-				"skills": ["adobe-full", "figma-full", "triad-hor", "nuxt-full", "vue", "laravel-full", "wordpress-full"]
+				"skills": ["adobe-full", "figma-full", "triad-hor", "sass", "nuxt-full", "laravel-full", "wordpress-full", "git"]
 			},
 			{
 				"id": 4,

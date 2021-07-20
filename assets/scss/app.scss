@@ -45,6 +45,7 @@ $scrollbar-width: .45rem;
 
 @import 'layout';
 @import 'modal';
+@import 'blobs';
 
 * {
 	text-rendering: optimizeLegibility;
@@ -103,6 +104,7 @@ $scrollbar-width: .45rem;
 
 
 :root {
+  // --primary: $color-primary;
   --blue: #494eff;
   --indigo: #6610f2;
   --purple: #710bb8;
@@ -11272,15 +11274,27 @@ a.badge-danger:focus {
   padding-left: 0;
   border-radius: 0;
 }
+.jumbotron-img-container {
+	position: relative;
+	width: 12rem;
+  height: 12rem;
+	margin-bottom: 4rem;
+	&.--has-blob {
+		padding: 1.25rem;
+	}
+}
+
 .jumbotron-img {
+	position: absolute;
   display: block;
-  width: 140px;
-  width: 10rem;
-  height: 140px;
-  height: 10rem;
-  border-radius: 5rem;
-  border: 2px solid $color-secondary;
-  margin-bottom: 4rem;
+	width: 100%;
+	height: 100%;
+  border-radius: 100%;
+	mix-blend-mode: darken;
+  // width: 10rem;
+  // height: 10rem;
+  // border: 2px solid $color-secondary;
+  // margin-bottom: 4rem;
 }
 .alert {
   position: relative;
@@ -12441,19 +12455,9 @@ a.badge-danger:focus {
   height: 1rem;
 }
 .section {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   position: relative;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
   justify-content: space-between;
   min-height: 100vh;
   overflow: hidden;
@@ -12471,6 +12475,23 @@ a.badge-danger:focus {
   text-transform: uppercase;
   font-size: 35px;
   font-size: 2.5rem;
+	&::before {
+		display: inline-block;
+		content: "#";
+		width: 2rem;
+		// width: 0;
+		// height: 2.75rem;
+		color: red;
+		transform-origin: left;
+		transform: scaleX(0);
+		transition: all ease-in-out .4s;
+		@include heading();
+
+		.interaction-in & {
+			// width: 2rem;
+			transform: scaleX(1);
+		}
+	}
 }
 @media (min-width: 360px) {
   .section-title {
@@ -12937,7 +12958,7 @@ a.badge-danger:focus {
   // height: auto;
   max-width: 100%;
   max-height: 100%;
-	filter: grayscale(100%) contrast(1.5);
+	filter: grayscale(100%) contrast(1.75);
 }
 .testimonial {
   display: flex;

@@ -1,12 +1,18 @@
 <template>
   <div class="jumbotron jumbotron-fluid pt-6 pt-lg-8 pb-0 mb-0">
-    <img
-      src="assets/img/avatar.png"
-      class="jumbotron-img animation-translate animation-item-1"
-      alt="Avatar"
-      @mouseenter="$root.$emit('anchor-hover')"
-      @mouseleave="$root.$emit('anchor-hover')"
-    />
+		<div class="jumbotron-img-container --has-blob animation-translate animation-item-1">
+			<Blob time="5" amount="5" fill="#ff007a" />
+			<Blob time="4.75" amount="5" fill="#ff00b5" />
+			<Blob time="3.55" amount="5" fill="#ff23f2" />
+			<Blob time="2.35" amount="5" fill="#ff0000" />
+			<img
+				src="assets/img/avatar.png"
+				alt="Avatar"
+				class="jumbotron-img"
+				@mouseenter="$root.$emit('anchor-hover')"
+				@mouseleave="$root.$emit('anchor-hover')"
+			/>
+		</div>
     <h1
       class="
         display-1 display-animated display-animated-in
@@ -28,7 +34,11 @@
   </div>
 </template>
 <script>
+import Blob from '~/components/Blob.vue'
 export default {
+	components: {
+    Blob
+  },
   props: {
     content: {
       type: Object,
