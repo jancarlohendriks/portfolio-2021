@@ -5,7 +5,7 @@
         class="section-title animation-translate-overline animation-item-1"
         v-if="content.title"
       >
-        {{ content.title }}>
+        {{ content.title }}
       </h2>
       <article class="article animation-translate animation-item-2">
         <nuxt-content :document="content" />
