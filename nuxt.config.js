@@ -3,6 +3,18 @@ export default {
 	// ssr: false,
 	loading: false,
 
+	mode:'universal',
+
+	generate: {
+		routes: [
+			'/bert-govers',
+			'/mooi',
+			'/riverco',
+			'/schommel',
+			'/strp',
+		]
+	},
+
   head: {
     title: 'portfolio-2021',
     htmlAttrs: {
