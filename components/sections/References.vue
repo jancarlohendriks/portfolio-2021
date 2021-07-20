@@ -13,13 +13,13 @@
         v-for="(skill, index) in content.skills"
         :key="index"
       >
-        <a href="#" class="logo-link">
+        <div class="logo-link">
           <img
             class="logo-img"
             :src="'assets/img/logos/' + skill + '.svg'"
             :alt="skill"
           />
-        </a>
+        </div>
       </div>
     </div>
   </div>

@@ -1,10 +1,10 @@
 <template>
   <div class="jumbotron jumbotron-fluid pt-6 pt-lg-8 pb-0 mb-0">
 		<div class="jumbotron-img-container --has-blob animation-translate animation-item-1">
-			<Blob time="5" amount="5" fill="#ff007a" />
-			<Blob time="4.75" amount="5" fill="#ff00b5" />
-			<Blob time="3.55" amount="5" fill="#ff23f2" />
-			<Blob time="2.35" amount="5" fill="#ff0000" />
+			<Blob time="5" amount="2" fill="#ff007a" />
+			<Blob time="4.75" amount="2" fill="#ff00b5" />
+			<Blob time="3.55" amount="2" fill="#ff23f2" />
+			<Blob time="2.35" amount="2" fill="#ff0000" />
 			<img
 				src="assets/img/avatar.png"
 				alt="Avatar"

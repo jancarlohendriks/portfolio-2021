@@ -4,7 +4,7 @@ $scrollbar-width: .45rem;
 
 ::selection {
 	color: $color-primary;
-	background-color: rgba($color-secondary, .5);
+	background-color: #ff0000;
 }
 
 #cursor {
@@ -15,12 +15,14 @@ $scrollbar-width: .45rem;
 	width: 1rem;
 	height: 1rem;
 	border-radius: 100%;
-	background-color: #fff;
+	// background-color: #fff;
+	background-color: rgb(0 0 0 / 0%);
+	backdrop-filter: invert(1);
 	z-index: 9999;
 	transition: width ease-in-out .3s, height ease-in-out .3s;	
 	pointer-events: none;
 	user-select: none;
-	mix-blend-mode: exclusion;
+	// mix-blend-mode: exclusion;
 	will-change: auto;
 	@media (min-width: 768px) {
 		display: block;
@@ -11259,10 +11261,9 @@ a.badge-danger:focus {
   background-color: rgba(0, 0, 0, 0);
   border-radius: 0.75rem;
 	
-	&-img, h1 > span {
-		// cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" x="40" width="30" height="40" style="font-size: 20px;"><text alignment-baseline="middle" text-anchor="middle" x="20" y="20">🔥</text></svg>'), auto;
-		cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" style="font-size: 20px;"><text y="20">🔥</text></svg>'), auto;
-	}
+	// &-img, h1 > span {
+	// 	cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" style="font-size: 20px;"><text y="20">🔥</text></svg>'), auto;
+	// }
 }
 @media (min-width: 576px) {
   .jumbotron {

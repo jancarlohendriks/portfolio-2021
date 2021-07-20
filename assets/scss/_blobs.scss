@@ -25,10 +25,12 @@
 
 @keyframes blob-turn {
 	0% {
-		transform: rotate(0deg), scale(1);
+		// transform: rotate(0deg), scale(1);
+		transform: rotate(0deg);
 	}
 	100% {
-		transform: rotate(360deg), scale(3);
+		// transform: rotate(360deg), scale(3);
+		transform: rotate(360deg);
 	}
 }
 
@@ -88,18 +90,27 @@
 
 @keyframes blob-scale {
 	0% {
-		transform: scaleX(0.9) scaleY(1);
+		transform: scaleX(0.8) scaleY(1);
 	}
 	25% {
-		transform: scaleX(0.9) scaleY(0.9);
+		transform: scaleX(0.8) scaleY(0.8);
 	}
 	50% {
-		transform: scaleX(1) scaleY(0.9);
+		transform: scaleX(1) scaleY(0.8);
 	}
 	75% {
-		transform: scaleX(0.9) scaleY(0.9);
+		transform: scaleX(0.8) scaleY(0.8);
 	}
 	100% {
-		transform: scaleX(0.9) scaleY(1);
+		transform: scaleX(0.8) scaleY(1);
 	}
+	// 0% {
+	// 	transform: scaleX(0.95) scaleY(0.95);
+	// }
+	// 50% {
+	// 	transform: scaleX(1) scaleY(1);
+	// }
+	// 100% {
+	// 	transform: scaleX(0.95) scaleY(0.95);
+	// }
 }

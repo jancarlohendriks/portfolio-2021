@@ -11,9 +11,9 @@
       >
         <div class="contact">
           <strong class="contact-label">Stay in touch</strong>
-          <a href="mailto:john@wilson.com">{{ content.email }}</a
+          <a :href="'mailto:' + content.email">{{ content.email }}</a
           ><br />
-          <a href="tel:+420652887351">{{ content.phone }}</a>
+          <a :href="'tel:' + content.phone">{{ content.phone }}</a>
         </div>
       </div>
       <div
@@ -23,68 +23,16 @@
       >
         <div class="contact">
           <strong class="contact-label">Social</strong>
-          <a href="https://www.facebook.com/">Facebook</a><br />
-          <a href="https://www.linked.com/">LinekdIn</a><br />
+          <a
+            v-for="(social, index) in content.socials"
+            :key="index"
+            :href="social.link">
+						{{ social.name }}
+						<br />
+					</a>
         </div>
       </div>
     </div>
-    <!-- <div class="row">
-			<div class="col-12 col-xl-9">
-				<h3 class="section-subtitle animation-translate animation-item-3">
-					Leave a message
-				</h3>
-				<form
-					class="needs-validation animation-translate animation-item-4"
-					novalidate
-				>
-					<div class="row">
-						<div class="col-12 col-md-6">
-							<div class="form-group">
-								<label for="contact-form-name">Name</label>
-								<input
-									type="text"
-									class="form-control"
-									name="name"
-									id="contact-form-name"
-									placeholder="Your name"
-									required
-								/>
-								<div class="invalid-feedback">Please enter your name.</div>
-							</div>
-						</div>
-						<div class="col-12 col-md-6">
-							<div class="form-group">
-								<label for="contact-form-name">E-mail</label>
-								<input
-									type="email"
-									class="form-control"
-									name="email"
-									id="contact-form-email"
-									placeholder="@"
-									required
-								/>
-								<div class="invalid-feedback">
-									Please enter a valid e-mail address.
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="contact-form-message">Message</label>
-						<textarea
-							class="form-control"
-							name="message"
-							id="contact-form-message"
-							placeholder="Your message"
-							rows="5"
-							required
-						></textarea>
-						<div class="invalid-feedback">Please type some message.</div>
-					</div>
-					<button type="submit" class="btn btn-primary">Send</button>
-				</form>
-			</div>
-		</div> -->
   </div>
 </template>
 <script>

@@ -14,7 +14,7 @@
 					"Jan Carlo",
 					"Hendriks"
 				],
-				"function": "FULLTIME WEBDEVELOPER",
+				"function": "FULLTIME AMATEUR & FRIENDLY NEIGHBOUR",
 				"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 			},
 			{
@@ -34,14 +34,13 @@
 				"fileName": "References",
 				"navName": "Skills",
 				"title": "Skills",
-				"skills": ["adobe-full", "figma-full", "triad-hor", "sass", "nuxt-full", "laravel-full", "wordpress-full", "git"]
+				"skills": ["adobe-full", "figma-full", "triad-hor", "nodejs", "nuxt-full", "laravel-full", "wordpress-full", "woocommerce", "sass", "git"]
 			},
 			{
 				"id": 4,
 				"fileName": "Projects",
 				"navName": "Projects",
 				"title": "Projects",
-				"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
 				"projects": [
 					{
 						"id": 0,
@@ -49,7 +48,12 @@
 						"subtitle": "Product Design Portfolio",
 						"tags": "Laravel — Vue.js",
 						"img": "project-bert.png",
-						"url": "https://www.studiobertgovers.nl/"
+						"url": "https://www.studiobertgovers.nl/",
+						"description": [
+							"Studio Bert Govers is an award winning Design studio (Goed Industrieel Ontwerp, Reddot Design Award, Design Preis Deutschland, iF Design Award)",
+							"lorem10",
+							"lorem10"
+						]
 					},
 					{
 						"id": 1,
@@ -57,7 +61,12 @@
 						"subtitle": "Landing Page",
 						"tags": "Nuxt.js",
 						"img": "project-schommel.png",
-						"url": "https://www.schommelaantafel.nl/"
+						"url": "https://www.schommelaantafel.nl/",
+						"description": [
+							"lorem10",
+							"lorem10",
+							"lorem10"
+						]
 					},
 					{
 						"id": 2,
@@ -65,7 +74,12 @@
 						"subtitle": "Beauty Salon",
 						"tags": "Wordpress Custom Theme",
 						"img": "project-mooi.png",
-						"url": "https://mooibijmaud.nl/"
+						"url": "https://mooibijmaud.nl/",
+						"description": [
+							"lorem10",
+							"lorem10",
+							"lorem10"
+						]
 					},
 					{
 						"id": 3,
@@ -73,7 +87,12 @@
 						"subtitle": "Events & Tickets Overview",
 						"tags": "Vue.js",
 						"img": "project-strp.png",
-						"url": "https://www.strp.nl/"
+						"url": "https://www.strp.nl/",
+						"description": [
+							"lorem10",
+							"lorem10",
+							"lorem10"
+						]
 					},
 					{
 						"id": 4,
@@ -81,7 +100,12 @@
 						"subtitle": "E-commerce",
 						"tags": "Wordpress — Woocommerce",
 						"img": "project-riverco.png",
-						"url": "https://www.riverco.nl/"
+						"url": "https://www.riverco.nl/",
+						"description": [
+							"lorem10",
+							"lorem10",
+							"lorem10"
+						]
 					}
 				]
 			},
@@ -91,7 +115,19 @@
 				"navName": "Contact",
 				"title": "Contact",
 				"email": "hello@jancarlohendriks.com",
-				"phone": "+31(0)630134464"
+				"phone": "+31(0)630134464",
+				"socials": [
+					{
+						"id": 0,
+						"name": "Instagram",
+						"link": "https://www.instagram.com/jakolax/"
+					},
+					{
+						"id": 1,
+						"name": "LinkedIn",
+						"link": "https://www.linkedin.com/in/jancarlohendriks/"
+					}
+				]
 			}
 		]
 	}

@@ -25,38 +25,7 @@
               </div>
               <main class="row flex-column-reverse flex-lg-row">
                 <div class="col-12 col-lg-6">
-                  <p>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                    diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                    aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                    justo duo dolores et ea rebum. Stet clita kasd gubergren, no
-                    sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem
-                    ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-                    nonumy eirmod tempor invidunt ut labore et dolore magna
-                    aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                    justo duo dolores et ea rebum. Stet clita kasd gubergren, no
-                    sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem
-                    ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-                    nonumy eirmod tempor invidunt ut labore et dolore magna
-                    aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                    justo duo dolores et ea rebum.
-                  </p>
-                  <p>
-                    Stet clita, no sea takimata sanctus est Lorem ipsum dolor
-                    sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
-                    elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-                    dolore magna aliquyam erat, sed diam voluptua. At vero eos
-                    et accusam et justo duo dolores et ea rebum. Stet clita kasd
-                    gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-                    amet. Lorem ipsum dolor sit amet, consetetur sadipscing
-                    elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-                    dolore magna aliquyam erat, sed diam voluptua. At vero eos
-                    et accusam et justo duo dolores et ea rebum. Stet clita kasd
-                    gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-                    amet. Lorem ipsum dolor sit amet, consetetur sadipscing
-                    elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-                    dolore magna aliquyam erat, sed diam voluptua.
-                  </p>
+                  <p v-for="(par, index) in project.description" :key="index">{{ par }}</p>
                 </div>
                 <div class="col-12 col-lg-6">
                   <img

@@ -45,7 +45,6 @@
             class="nav-link sections-nav-link goto-section"
             :class="{ active: index == selected }"
           >
-						<!-- @mousemove="$root.$emit('anchor-hover')" -->
             <span class="sections-nav-counter">{{ '0' + (index + 1) }}</span>
             {{ section.navName }}
           </a>
@@ -141,7 +140,6 @@ export default {
     },
 
 		cursorCircle() {
-      // return `transform: translateX(${this.xParent}px) translateY(${this.yParent}px) translateZ(0) translate3d(0, 0, 0);`
       return `top:${this.yParent}px;left:${this.xParent}px;`
     },
   },
