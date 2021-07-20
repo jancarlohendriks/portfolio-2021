@@ -5,8 +5,7 @@
 				<div class="modal-header">
 					&nbsp;
 					<!-- <nuxt-link class="modal-close" to="/#Projects"> -->
-					<div class="modal-close"
-					@click="$router.go(-1)">
+					<div class="modal-close" @click="$router.go(-1)">
 						<span class="d-none">&times;</span>
 					</div>
 					<!-- </nuxt-link> -->
@@ -36,11 +35,16 @@
 				</div>
 			</div>
 		</div>
+		<PageCursor />
 	</article>
 </template>
 <script>
+import PageCursor from '~/components/PageCursor.vue'
 export default {
 	transition: 'fade',
+	components: {
+		PageCursor
+  },
   async asyncData({ $content, params }) {
     const project = await $content('projects', params.slug).fetch()
 

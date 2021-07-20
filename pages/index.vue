@@ -1,9 +1,8 @@
 <template>
-    <!-- id="page-body" -->
   <div
     class="page-body with-header"
+		:class="{ 'sections-nav-in': menuOpen }"
   >
-    <!-- :class="{ 'modal-open': modalOpen, 'sections-nav-in': menuOpen }" -->
     <header class="header">
       <div
         class="
@@ -81,55 +80,37 @@
         </div>
       </div>
     </main>
-
-    <!-- <Modals v-show="modalOpen" :project="project" /> -->
-
-    <span id="cursor" ref="cursor" :style="cursorCircle"></span>
+		<PageCursor />
   </div>
 </template>
 
 <script>
 import Section from '~/components/Section.vue'
+import PageCursor from '~/components/PageCursor.vue'
 
 export default {
   components: {
     Section,
-    // Modals: () =>
-    //   import(/* webpackChunkName: "Modals" */ '~/components/Modals.vue'),
+		PageCursor
   },
-
-	// transition: {
-  //   afterEnter(el) {
-  //     const hash = location.hash
-	// 		if(hash) {
-	// 			document.querySelector(hash).scrollIntoView({behavior: "auto"})
-	// 		}
-  //   }
-  // },
 
   data() {
     return {
       menuOpen: false,
-      // modalOpen: false,
-      selected: null,
       observer: null,
-      isScrolling: false,
-      project: null,
+			selected: 0,
 			isMobile: true,
-			xChild: 0,
-      yChild: 0,
-      xParent: 0,
-      yParent: 0,
-      cursorPos: {
-        x: 0,
-        y: 0,
-      },
-      mousePos: {
-        x: 0,
-        y: 0,
-      },
     }
   },
+
+	// transition: {
+  //   beforeLeave(el) {
+  //     document.body.style.backgroundColor = "#171717"
+  //   },
+  //   beforeEnter(el) {
+  //     document.body.style.backgroundColor = "none"
+  //   },
+  // },
 
   async asyncData({ $content, params }) {
     const content = await $content('index').fetch()
@@ -140,28 +121,7 @@ export default {
     sections() {
       return this.$refs.sections.children
     },
-    // pageBody() {
-    //   return document.getElementById('page-body')
-    // },
-    // projects() {
-    //   const projects = this.content.sections.filter(
-    //     (e) => e.fileName == 'Projects'
-    //   )[0].projects
-    //   return projects
-    // },
-
-		cursorCircle() {
-      return `top:${this.yParent}px;left:${this.xParent}px;`
-    },
   },
-
-	// beforeMount() {
-	// 	document.querySelector(location.hash).scrollIntoView()
-	// },
-
-  // created() {
-  //   this.project = this.projects[0]
-  // },
 
   mounted() {
 		const hash = location.hash
@@ -169,45 +129,18 @@ export default {
 			document.querySelector(hash).scrollIntoView()
 		}
 		this.onResize
-		window.addEventListener("resize", this.onResize);
+		window.addEventListener("resize", this.onResize)
     this.initObserver()
     this.observeSections()
-		window.addEventListener("mousemove", this.moveCursor);
-    window.addEventListener('scroll', this.onScroll)
     this.$root.$on('next-section', (index) => { this.goTo(index) })
-    this.$root.$on('anchor-hover', () => { this.onAnchorHover })
-		// this.$root.$on('modal-close', () => { this.modalOpen = false })
-    this.$root.$on('modal-open', (e) => {
-      this.project = this.projects[e]
-      // this.modalOpen = true
-    })
   },
 
   methods: {
-
-		onAnchorHover() {
-			const cursor = this.$refs.cursor
-			console.log('cursor');
-			cursor.classList.toggle('active')
-		},
 
 		onResize() {
 			var mql = window.matchMedia('(min-width: 990px)');
 			mql.matches ? this.isMobile = false : this.isMobile = true
 		},
-
-		moveCursor(e) {
-			const cursor = this.$refs.cursor
-			setTimeout(() => {
-				this.xParent = e.pageX - (cursor.offsetWidth / 2)
-				this.yParent = e.pageY - (cursor.offsetWidth / 2)
-			}, 120);
-		},
-
-    onScroll() {
-      // const newHash = this.content.sections[this.selected].navName
-      // history.replaceState({}, newHash, `/#${newHash}`)
-    },
 
     goTo(index) {
       if (this.selected == index) {

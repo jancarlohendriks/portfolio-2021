@@ -7,15 +7,7 @@ $scrollbar-width: .45rem;
 	background-color: #ff0000;
 }
 
-// .page-enter-active, .page-leave-active {
-//   transition: all .25s ease-out;
-// }
-// .page-enter, .page-leave-active {
-//   opacity: 0;
-//   transform-origin: 50% 50%;
-// }
-
-#cursor {
+#page-cursor {
 	position: fixed;
 	display: none;
 	top: 0;
@@ -9751,7 +9743,7 @@ input:-webkit-autofill:hover {
   height: 70px;
   height: 5rem;
   padding: 1rem 0;
-  background-color: $color-primary;
+  // background-color: $color-primary;
   z-index: 1030;
 }
 .header-brand {
@@ -10406,7 +10398,7 @@ input:-webkit-autofill:hover {
   transition: -webkit-transform 0.35s ease;
   transition: transform 0.35s ease;
   transition: transform 0.35s ease, -webkit-transform 0.35s ease;
-  background-color: $color-primary;
+  // background-color: $color-primary;
 }
 @media (min-width: 576px) {
   .sections-nav-container {
