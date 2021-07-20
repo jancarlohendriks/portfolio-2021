@@ -1,13 +1,11 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
 	// ssr: false,
+	// mode:'universal',
 	loading: false,
-
-	mode:'universal',
 
 	generate: {
 		routes: [
-			'/about',
 			'/bert-govers',
 			'/mooi',
 			'/riverco',
@@ -15,6 +13,21 @@ export default {
 			'/strp',
 		]
 	},
+
+	// generate: {
+  //   async routes () {
+  //     // next comment to make VSCode ignore the "error"
+  //     // @ts-ignore
+  //     const { $content } = require('@nuxt/content')
+  //     const pages = await $content().only(['path']).fetch()
+  //     // const posts = await $content('posts').only(['path']).fetch()
+      
+  //     // const files = [...pages,...posts,]
+  //     const files = [...pages]
+
+  //     return files.map(file => file.path === '/index' ? '/' : file.path)
+  //   }
+  // },
 
   head: {
     title: 'portfolio-2021',
