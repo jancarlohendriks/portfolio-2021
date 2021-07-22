@@ -6,6 +6,6 @@ img: project-bert.png
 url: https://www.studiobertgovers.nl/
 ---
 
-Studio Bert Govers is an award winning Design studio (Goed Industrieel Ontwerp, Reddot Design Award, ...)
+Studio Bert Govers is an award winning Design Studio (Goed Industrieel Ontwerp, Reddot Design Award, ...).
 
-The design was encommended by the designer himself.
+The web design was created by the designer himself.

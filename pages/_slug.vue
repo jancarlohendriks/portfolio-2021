@@ -4,14 +4,12 @@
       <div class="modal-content">
         <div class="modal-header">
           &nbsp;
-          <div
-            class="modal-close"
-            @click="$router.go(-1)"
+          <NuxtLink to="/#Projects"
+						class="modal-close"
             @mouseenter="$root.$emit('anchor-hover')"
-            @mouseleave="$root.$emit('anchor-hover')"
-          >
+            @mouseleave="$root.$emit('anchor-hover')">
             <span class="d-none">&times;</span>
-          </div>
+          </NuxtLink>
         </div>
         <div class="modal-body">
           <article class="article">

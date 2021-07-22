@@ -51,13 +51,20 @@
         </li>
         <li class="sections-nav-item">
           <div class="sections-nav-info">
-            <a :href="'mailto:' + content.personal.email">{{
+						<a v-for="(info, index) in content.personal"
+						:key="index"
+						target="_blank"
+						:href="(info.key ? `${info.key}` : '') + `${info.value}`">
+							{{ info.placeholder }}
+						<br v-if="index < content.personal.length - 1" />
+						</a>
+            <!-- <a :href="'mailto:' + content.personal.email">{{
               content.personal.email
             }}</a
             ><br />
             <a :href="'tel:' + content.personal.phone">{{
               content.personal.phone
-            }}</a>
+            }}</a> -->
           </div>
         </li>
       </ul>
@@ -100,6 +107,8 @@ export default {
       observer: null,
 			selected: 0,
 			isMobile: true,
+			scrollPosition: 0,
+			ticking: false
     }
   },
 
@@ -123,19 +132,56 @@ export default {
     },
   },
 
+	// beforeMount() {
+	// 	history.pushState("", document.title, window.location.pathname);
+	// },
+
   mounted() {
 		const hash = location.hash
 		if(hash) {
 			document.querySelector(hash).scrollIntoView()
 		}
 		this.onResize
-		window.addEventListener("resize", this.onResize)
+		window.addEventListener('resize', this.onResize)
     this.initObserver()
     this.observeSections()
     this.$root.$on('next-section', (index) => { this.goTo(index) })
+		
+		// window.addEventListener('scroll', e => {
+    //   requestAnimationFrame(() => {
+    //     console.log(e);
+    //   })
+    // })
   },
 
+	// created() {
+	// 	if (process.client) {
+	// 		window.addEventListener('scroll', this.updateScrollPosition);
+	// 	}
+	// },
+	// destroyed() {
+  //   if (process.client) { 
+  //     window.removeEventListener('scroll', this.updateScrollPosition);
+  //   }
+	// },
+
   methods: {
+
+		updateScrollPosition() {
+			this.scrollPosition = window.scrollY;   
+			
+			if (!this.ticking) {
+				window.requestAnimationFrame(function() {
+				
+				// do something
+				console.log("object");
+
+				this.ticking = false;
+			});
+
+			this.ticking = true;
+		}
+		},
 
 		onResize() {
 			var mql = window.matchMedia('(min-width: 990px)');

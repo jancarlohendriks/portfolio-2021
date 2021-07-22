@@ -19,7 +19,6 @@ export default {
   },
 	beforeDestroy() {
 		window.removeEventListener("mousemove", this.moveCursor)
-		// this.$root.$destroy('anchor-hover', () => { this.$refs.pageCursor.classList.toggle('active') })
 	},
 	mounted() {
 		window.addEventListener("mousemove", this.moveCursor)

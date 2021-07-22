@@ -3,7 +3,8 @@
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	transform: scale(1.195);
+	// transform: scale(1.195);
+	transform: scale(var(--scale, 1));
 }
 
 .blob {

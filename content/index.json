@@ -1,9 +1,17 @@
 [
 	{
-		"personal": {
-			"email": "hello@jancarlohendriks.com",
-			"phone": "+31(0)630134464"
-		},
+		"personal": [
+			{
+				"key": "",
+				"value": "https://www.linkedin.com/in/jancarlohendriks/",
+				"placeholder": "LinkedIn"
+			},
+			{
+				"key": "mailto:",
+				"value": "hello@jancarlohendriks.com",
+				"placeholder": "Email"
+			}
+		],
 		"sections": [
 			{
 				"id": 0,
@@ -106,26 +114,6 @@
 							"lorem10",
 							"lorem10"
 						]
-					}
-				]
-			},
-			{
-				"id": 5,
-				"fileName": "Contact",
-				"navName": "Contact",
-				"title": "Contact",
-				"email": "hello@jancarlohendriks.com",
-				"phone": "+31(0)630134464",
-				"socials": [
-					{
-						"id": 0,
-						"name": "Instagram",
-						"link": "https://www.instagram.com/jakolax/"
-					},
-					{
-						"id": 1,
-						"name": "LinkedIn",
-						"link": "https://www.linkedin.com/in/jancarlohendriks/"
 					}
 				]
 			}
