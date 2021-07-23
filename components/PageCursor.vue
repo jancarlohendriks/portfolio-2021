@@ -31,12 +31,12 @@ export default {
 	methods: {
 		moveCursor(e) {
 			const cursor = this.$refs.pageCursor
-			if(cursor) {
+			// if(cursor) {
 				setTimeout(() => {
 					this.xParent = e.pageX - (cursor.offsetWidth / 2)
 					this.yParent = e.pageY - (cursor.offsetWidth / 2)
-				}, 120);
-			}
+				}, 200);
+			// }
 		},
 	}
 }

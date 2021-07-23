@@ -19,12 +19,14 @@
         animation-translate animation-item-2
       "
     >
+			<!-- data-scroll-section -->
       <span
         v-for="(name, index) in content.name"
         :key="index"
         @mouseenter="$root.$emit('anchor-hover')"
         @mouseleave="$root.$emit('anchor-hover')"
       >
+				<!-- data-scroll :data-scroll-speed="2.5 * (index + 1)" -->
         {{ name }}<br />
       </span>
     </h1>
@@ -45,5 +47,10 @@ export default {
       required: true,
     },
   },
+	mounted() {
+		// this.$nextTick(() => {
+			this.$nuxt.$emit('update-locomotive')
+		// })
+	},
 }
 </script>

@@ -3,61 +3,14 @@ $color-primary: #f3f2f7;
 $color-secondary: #0c0c0c;
 $scrollbar-width: .45rem;
 
-::selection {
-	color: $color-primary;
-	background-color: #ff0000;
-}
-
-#page-cursor {
-	position: fixed;
-	display: none;
-	top: 0;
-	left: 0;
-	width: 1rem;
-	height: 1rem;
-	border-radius: 100%;
-	// background-color: #fff;
-	background-color: rgb(0 0 0 / 0%);
-	backdrop-filter: invert(1);
-	z-index: 9999;
-	transition: width ease-in-out .3s, height ease-in-out .3s;	
-	pointer-events: none;
-	user-select: none;
-	// mix-blend-mode: exclusion;
-	will-change: auto;
-	@media (min-width: 768px) {
-		display: block;
-	}
-	&.active {
-		width: 10rem;
-		height: 10rem;
-	}
-}
-
-@mixin heading() {
-	font-family: proxima-nova, sans-serif;
-	font-weight: 700;
-	font-style: normal;
-}
-
-@mixin body() {
-	font-family: Montserrat, sans-serif;
-	font-weight: 300;
-	font-style: normal;
-}
-
+@import 'mixins';
 @import 'layout';
 @import 'modal';
 @import 'blobs';
+@import 'page-cursor';
 
 * {
 	text-rendering: optimizeLegibility;
-}
-
-::-webkit-scrollbar {
-	width: $scrollbar-width;
-	&-track { background-color: rgba($color-secondary, .2); }
-	&-thumb { background-color: $color-secondary; }
 }
 
 .header {

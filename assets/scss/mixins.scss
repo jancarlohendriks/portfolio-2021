@@ -1,0 +1,11 @@
+@mixin heading() {
+	font-family: proxima-nova, sans-serif;
+	font-weight: 700;
+	font-style: normal;
+}
+
+@mixin body() {
+	font-family: Montserrat, sans-serif;
+	font-weight: 300;
+	font-style: normal;
+}
