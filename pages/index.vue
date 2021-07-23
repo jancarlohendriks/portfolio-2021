@@ -12,7 +12,7 @@
 				smartphone: {
 					smooth: true,
 					direction: 'vertical',
-					lerp: 0.1,
+					lerp: 0.5,
 				},
 				tablet: {
 					smooth: true,
