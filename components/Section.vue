@@ -3,7 +3,7 @@
     :id="section.navName"
     class="section animation"
     :class="{ 'section-sub-header': count.index == 0 }"
-    data-scroll-section
+    data-scroll-section data-scroll-delay="5"
   >
     <div class="section-body">
       <component :content="section" :is="componentType"></component>
@@ -19,7 +19,7 @@
           {{ '0' + (count.index + 1) }} /
           {{ count.total &lt; 10 ? '0' + count.total : count.total }}
         </span>
-        <span class="section-next" v-if="count.index + 1 !== count.total">
+        <span v-if="count.index + 1 !== count.total" class="section-next">
           <span class="section-next-label">Next chapter</span>
           <span class="section-next-icon"></span>
         </span>

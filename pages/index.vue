@@ -3,6 +3,7 @@
 		class="page-body with-header"
 		:class="{ 'sections-nav-in': menuOpen }"
 	>
+		<div class="page-bg"></div>
 				<!-- reloadOnContextChange: true, -->
 		<LocomotiveScroll ref="scroller" :getted-options="scrollOptions">
 			<header class="header">
@@ -113,14 +114,14 @@ export default {
 			scrollOptions: {
 				smooth: true,
 				direction: 'vertical',
-				lerp: 0.1,
+				lerp: 0.045,
 				smartphone: {
 					smooth: false
 				},
 				tablet: {
 					smooth: true,
 					direction: 'vertical',
-					lerp: 0.1,
+					lerp: 0.045,
 				},
 			}
     }
@@ -166,6 +167,13 @@ export default {
     //   })
     // }, 2500)
 
+		// this.$refs.scroller.locomotive.on('scroll', (args) => {
+		// 	if(typeof args.currentElements === 'object') {
+    //     let progress = args.currentElements.progress;
+    //     console.log(progress);
+    // 	}
+		// })
+
 		const hash = location.hash
 		if(hash) {
 			document.querySelector(hash).scrollIntoView()
@@ -201,13 +209,14 @@ export default {
     },
 
     initObserver() {
-      let options = { threshold: [0.3] }
+      let options = { threshold: [0.5] }
       this.observer = new IntersectionObserver((entries) => {
         entries.filter((e) => {
           const selected = [...this.sections].indexOf(e.target)
           if (e.isIntersecting) {
-            this.selected = selected
+						this.selected = selected
             e.target.classList.add('interaction-in')
+						// this.$nuxt.$emit('update-locomotive')
           }
         })
       }, options)
