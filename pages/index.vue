@@ -176,7 +176,9 @@ export default {
 
 		const hash = location.hash
 		if(hash) {
-			document.querySelector(hash).scrollIntoView()
+			const newSection = document.querySelector(hash)
+			this.$refs.scroller.locomotive.scrollTo(newSection)
+			// document.querySelector(hash).scrollIntoView()
 		}
 		this.onResize
 		window.addEventListener('resize', this.onResize)
