@@ -77,7 +77,13 @@ export default {
   modules: ['@nuxt/content'],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+		extend(config, ctx) {}
+	},
+
+	server: {
+		host: "0.0.0.0"
+	},
 
 	/*
   ** Router configuration

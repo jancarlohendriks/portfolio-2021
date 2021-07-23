@@ -3,23 +3,8 @@
 		class="page-body with-header"
 		:class="{ 'sections-nav-in': menuOpen }"
 	>
-		<LocomotiveScroll
-			ref="scroller"
-			:getted-options="{
-				smooth: true,
-				direction: 'vertical',
-				lerp: 0.1,
-				smartphone: {
-					smooth: true,
-					direction: 'vertical',
-				},
-				tablet: {
-					smooth: true,
-					direction: 'vertical',
-					lerp: 0.1,
-				},
-			}"
-		>
+				<!-- reloadOnContextChange: true, -->
+		<LocomotiveScroll ref="scroller" :getted-options="scrollOptions">
 			<header class="header">
 				<div
 					class="
@@ -125,8 +110,19 @@ export default {
       observer: null,
 			selected: 0,
 			isMobile: true,
-			scrollPosition: 0,
-			ticking: false
+			scrollOptions: {
+				smooth: true,
+				direction: 'vertical',
+				lerp: 0.1,
+				smartphone: {
+					smooth: false
+				},
+				tablet: {
+					smooth: true,
+					direction: 'vertical',
+					lerp: 0.1,
+				},
+			}
     }
   },
 
