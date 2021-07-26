@@ -17,7 +17,81 @@
   }
 }
 
+@mixin absolute {
+	position: absolute;
+	content: '';
+	display: inline-block;
+	top: 50%;
+}
 
+@mixin line($width: 100%, $height: 1px) {
+	width: $width;
+	height: $height;
+	background-color: $color-secondary;
+	transform: translateY(-50%);
+}
+
+@mixin arrow($size: 1rem, $width: 1px) {
+	right: #{$size / 1.65};
+	width: $size;
+	height: $size;
+	border: $width solid $color-secondary;
+	border-bottom: 0;
+	border-left: 0;
+	transform: rotate(45deg) translateY(calc(-50% - 3px));
+}
+
+.modal-link {
+	position: relative;
+	display: inline-flex;
+	text-decoration: none;
+
+	&::after {
+		position: absolute;
+		display: inline-block;
+		content: ' ';
+		width: 1.25rem;
+		height: 1.25rem;
+		background-size: contain;
+		background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAABmJLR0QA/wD/AP+gvaeTAAAB/UlEQVR4nO3cS04DMRCE4R/EjVhwNDg1yg3CIkgsQjI9tnuqPa5PYjdjlat4SCwCZmZmZmZmZma2ipeGd67DU/TZusPReXd1+pqVwmI8gJgHEPMAYh5AzAOIeYAJXTe+zuAd+Gb7rpL7ywMk6ynfA3TqLd8DdBhRvgdoNKp8D9DgA7gQKzfyXDp5gIH2fOdfuI0lv788wCAt5RN4Np08wACt5RN4Pp08QKee8gm8k04eoENv+QTeSycP0GhE+QTeTScP0GBU+QTeTycPsNPI8gmckU4eYIfR5RM4J508QFBG+QTOSicPEJBVPoHz0skDbMgsn8CZ6eQBnsgun8C56eQBHjiifAJnp5MH+MdR5ZdQbYClyodaAyxXPtQZYMnyocYAy5YP+gGWLh+0AyxfPugGcPm/FANUKl/9K/jwAJXKJ5Ah3ZEBqpVPIMdpAlQsn0CWUwSoWj6BPNMHqFw+gUxTB6hePoFc0waYoXwC2aYMMEv5PMk19QBfgXMrlA8nHQDgc+PcCuXDiQeAxyNUKR9OPgDcj1CpfFhgAPgboVr5sMgAcPvDXK18GHz/jI8sazlzJkPv7w/rEPMAYh5AzAOIeQAxDyDmAcQ8gJgHEPMAYh5AzAOIvSWceci/ZM/CPwFiHkDMA4h5ADEPIOYBxDyAmZmZmZmZmZnZQX4AGTwk5FRW1TcAAAAASUVORK5CYII=);
+		// top: 50%;
+		right: -1.75rem;
+		bottom: 3px;
+		// transform: translateY(-50%);
+	}
+
+	// span.line-left {
+	// 	position: relative;
+	// 	display: inline-block;
+	// 	width: 5rem;
+	// 	height: .9rem;
+	// 	margin-right: .5rem;
+		
+	// 	&::before {
+	// 		@include absolute();
+	// 		@include line();
+	// 	}
+	// }
+	
+	// span.arrow-right {
+	// 	position: relative;
+	// 	display: inline-block;
+	// 	width: 5rem;
+	// 	height: .9rem;
+	// 	margin-left: 1rem;
+	// 	&::before, &::after {
+	// 		@include absolute();
+	// 	}
+	
+	// 	&::before {
+	// 		@include line();
+	// 	}
+	// 	&::after {
+	// 		@include arrow();
+	// 	}
+	// }
+
+}
 
 // .modal-open {
 //   overflow: hidden;
@@ -28,17 +102,29 @@
 // }
 
 .modal {
-  position: fixed;
+  // position: fixed;
   top: 0;
   left: 0;
   z-index: 1050;
   display: none;
   width: 100%;
-  height: 100%;
+  // height: 100%;
 	// overflow-y: auto;
   // overflow: hidden;
   outline: 0;
 	background-color: rgba($color-primary, .975);
+	height: 100vh;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.modal .col-12.col-lg-6 img {
+	margin-bottom: 2rem !important;
+	@media (min-width: 576px) {
+		& {
+			margin-bottom: 1.5rem !important;
+		}
+	}
 }
 
 .modal.show {

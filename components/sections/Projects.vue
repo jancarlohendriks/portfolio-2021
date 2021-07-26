@@ -11,7 +11,12 @@
 				@mouseenter="$root.$emit('anchor-hover')"
 				@mouseleave="$root.$emit('anchor-hover')"
       >
-				<nuxt-link class="card" :to="'/' + project.slug">
+				<nuxt-link class="card" :to="'/' + project.slug" :id="'fixed-target-' + index">
+				<!-- data-scroll
+				data-scroll-repeat -->
+					<!-- data-scroll
+					data-scroll-sticky
+					:data-scroll-target="'#fixed-target-' + index" -->
           <img
             class="card-img-top"
             :src="`assets/img/${project.img}`"

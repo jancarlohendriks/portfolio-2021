@@ -114,14 +114,14 @@ export default {
 			scrollOptions: {
 				smooth: true,
 				direction: 'vertical',
-				lerp: 0.045,
+				lerp: 0.065,
 				smartphone: {
 					smooth: false
 				},
 				tablet: {
 					smooth: true,
 					direction: 'vertical',
-					lerp: 0.045,
+					lerp: 1,
 				},
 			}
     }
@@ -167,27 +167,39 @@ export default {
     //   })
     // }, 2500)
 
-		// this.$refs.scroller.locomotive.on('scroll', (args) => {
-		// 	if(typeof args.currentElements === 'object') {
-    //     let progress = args.currentElements.progress;
-    //     console.log(progress);
-    // 	}
-		// })
-
 		const hash = location.hash
 		if(hash) {
 			const newSection = document.querySelector(hash)
 			this.$refs.scroller.locomotive.scrollTo(newSection)
+			history.pushState("", document.title, window.location.pathname)
 			// document.querySelector(hash).scrollIntoView()
 		}
 		this.onResize
+		// window.addEventListener('scroll', this.onScroll)
 		window.addEventListener('resize', this.onResize)
-    this.initObserver()
-    this.observeSections()
+    // this.initObserver()
+    // this.observeSections()
     this.$root.$on('next-section', (index) => { this.goTo(index) })
+
+		this.$refs.scroller.locomotive.on('scroll', (obj) => {
+			console.log(obj.currentElements['0'],obj.currentElements['1'], Object.keys(obj.currentElements));
+			// this.onScroll()
+			// console.log(obj.currentElements);
+		});
+
   },
 
   methods: {
+
+		onScroll() {
+			// console.log("object");
+			[...this.sections].forEach(section => {
+				const selected = [...this.sections].indexOf(section)
+				if (section.hasAttribute('data-scroll-section-inview')) {
+					console.log(selected);
+				}
+			});
+		},
 
 		onResize() {
 			var mql = window.matchMedia('(min-width: 990px)');
@@ -217,7 +229,7 @@ export default {
           const selected = [...this.sections].indexOf(e.target)
           if (e.isIntersecting) {
 						this.selected = selected
-            e.target.classList.add('interaction-in')
+            // e.target.classList.add('interaction-in')
 						// this.$nuxt.$emit('update-locomotive')
           }
         })

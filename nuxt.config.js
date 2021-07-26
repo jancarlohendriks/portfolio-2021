@@ -30,7 +30,7 @@ export default {
   // },
 
   head: {
-    title: 'portfolio-2021',
+    title: 'Jan Carlo Hendriks',
     htmlAttrs: {
       lang: 'en'
     },
@@ -41,7 +41,35 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+			{
+				rel: 'apple-touch-icon',
+				sizes: '180x180',
+				href: '/assets/icons/apple-touch-icon.png'
+    	},
+			{
+				rel: 'icon',
+				sizes: '32x32',
+				href: '/assets/icons/favicon-32x32.png'
+    	},
+			{
+				rel: 'icon',
+				sizes: '16x16',
+				href: '/assets/icons/favicon-16x16.png'
+    	},
+			{
+				rel: 'manifest',
+				href: '/assets/icons/site.webmanifest'
+    	},
+			{
+				rel: 'mask-icon',
+				href: '/assets/icons/safari-pinned-tab.svg',
+				color: '#1c2438'
+    	},
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Cormorant:wght@400;500;700&display=swap'
+      },
+      // { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
 			{
 				rel: 'stylesheet',
 				href: 'https://use.typekit.net/abt6rwi.css'
@@ -63,7 +91,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-		{ src: '~/plugins/LocomotiveBoth.js' },
+		{ src: '~/plugins/LocomotiveBoth.js', mode: 'client' },
 		{ src: '~/plugins/LocomotivePlugin.js', mode: 'client' },
 	],
 

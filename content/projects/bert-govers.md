@@ -6,6 +6,9 @@ img: project-bert.png
 url: https://www.studiobertgovers.nl/
 ---
 
-Studio Bert Govers is an award winning Design Studio (Goed Industrieel Ontwerp, Reddot Design Award, ...).
+### Bert Govers is a Product & Graphic Designer based in Eindhoven.
 
-The web design was created by the designer himself.
+He has been awarded for his designs with
+- Reddot Design Award
+- Design Preis Deutschland
+- iF Design Award

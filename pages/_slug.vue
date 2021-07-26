@@ -22,7 +22,7 @@
               <div class="col-12 col-lg-6">
                 <nuxt-content :document="project" />
               </div>
-              <div
+              <a target="_blank" :href="project.url"
                 class="col-12 col-lg-6"
                 @mouseenter="$root.$emit('anchor-hover')"
                 @mouseleave="$root.$emit('anchor-hover')"
@@ -32,10 +32,12 @@
                   :src="`assets/img/${project.img}`"
                   alt="Nanovo"
                 />
-                <a target="_blank" :href="project.url"
-                  >Open project in new tab</a
-                >
-              </div>
+								<p class="modal-link">
+										<span class="line-left"></span>
+										View site
+										<span class="arrow-right"></span>
+								</p>
+              </a>
             </main>
           </article>
         </div>

@@ -31,6 +31,7 @@ export default {
 	methods: {
 		moveCursor(e) {
 			const cursor = this.$refs.pageCursor
+			cursor.style.opacity = 1
 			// if(cursor) {
 				setTimeout(() => {
 					this.xParent = e.pageX - (cursor.offsetWidth / 2)

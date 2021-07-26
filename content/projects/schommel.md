@@ -1,9 +1,10 @@
 ---
 title: Schommel aan tafel
-subtitle: Landing Page
+subtitle: Single Page Application
 tags: Nuxt.js
 img: project-schommel.png
 url: https://www.schommelaantafel.nl/
 ---
+### Office Swing Set Tables
 
-Studio Bert Govers is an award winning Design studio (Goed Industrieel Ontwerp, Reddot Design Award, Design Preis Deutschland, iF Design Award)
+Where workers can change gears to a more enjoyable lunch with their colleagues.

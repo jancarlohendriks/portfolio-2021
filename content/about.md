@@ -7,4 +7,6 @@ Previously graduated from a 4 year studies in Media and Interaction Design, and 
 
 Currently I am deepening my knowlegde into the IT world at Fontys University of Applied sciences.
 
-In my spare time, I like to share a beer with open-minded people and have a good time under some techno music.
+Passionated about solving problems and creating unique digital experiences.
+
+Do we share interests? Drop me a line! 👉
