@@ -10,9 +10,9 @@
 	&-thumb { background-color: $color-secondary; }
 }
 
-html, body, .page-body {
-	scroll-behavior: smooth;
-}
+// html, body, .page-body {
+// 	scroll-behavior: smooth;
+// }
 
 body {
 	@media (min-width: 768px) {

@@ -12,6 +12,7 @@
   
 export const state = () => ({
   scroll: {
+		selectedIndex: 0,
     isScrolling: false,
     limit: {
       x: 0,

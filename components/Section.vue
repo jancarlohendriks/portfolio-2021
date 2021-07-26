@@ -6,7 +6,8 @@
     data-scroll-section
   >
     <!-- data-scroll-section data-scroll-delay="5" -->
-    <div class="section-body" data-scroll data-scroll-speed="1.5" data-toggle :data-toggle-call="count.index">
+    <!-- <div class="section-body" data-scroll data-scroll-speed="1.5" data-toggle :data-toggle-call="count.index"> -->
+    <div class="section-body" data-scroll data-scroll-speed="1.5">
       <component :content="section" :is="componentType"></component>
     </div>
     <div class="section-footer animation-translate animation-item-4">

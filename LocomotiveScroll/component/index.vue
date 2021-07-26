@@ -54,8 +54,16 @@ export default {
   },
   methods: {
     onScroll(e) {
-      if (typeof this.$store._mutations['app/setScroll'] !== 'undefined') {
+			// let scrollPosY = e.delta.y
+			// let elTop = currentEl.top
+			// let elBottom = currentEl.bottom
+			let currentElId = e.currentElements[Object.keys(e.currentElements)[0]].id
+			let selectedIndex = currentElId.replace(/\D/g, "");
+			// console.log(selectedIndex);
+      
+			if (typeof this.$store._mutations['app/setScroll'] !== 'undefined') {
         this.$store.commit('app/setScroll', {
+					selectedIndex: selectedIndex,
           isScrolling: this.locomotive.scroll.isScrolling,
           limit: { ...e.limit },
           ...e.scroll, // x, y
