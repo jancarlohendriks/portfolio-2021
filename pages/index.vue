@@ -40,8 +40,8 @@
 						:key="index"
 						class="sections-nav-item"
 					>
-							<!-- :href="'#' + section.navName" -->
 						<a
+							:href="'#' + section.navName"
 							class="nav-link sections-nav-link goto-section"
 							:class="{ active: index == selected }"
 							@click="menuOpen = false"
@@ -91,12 +91,6 @@ import LocomotiveScroll from '~/LocomotiveScroll/component/index.vue'
 import Section from '~/components/Section.vue'
 import PageCursor from '~/components/PageCursor.vue'
 
-// import gsap from 'gsap'
-// import { ScrollTrigger } from 'gsap/ScrollTrigger'
-// gsap.registerPlugin(ScrollTrigger)
-
-// import { gsap, ScrollTrigger } from "gsap/all";
-
 export default {
   components: {
 		LocomotiveScroll,
@@ -126,15 +120,6 @@ export default {
     }
   },
 
-	// transition: {
-  //   beforeLeave(el) {
-  //     document.body.style.backgroundColor = "#171717"
-  //   },
-  //   beforeEnter(el) {
-  //     document.body.style.backgroundColor = "none"
-  //   },
-  // },
-
   async asyncData({ $content, params }) {
     const content = await $content('index').fetch()
     return { content }
@@ -146,9 +131,9 @@ export default {
     },
   },
 
-	beforeUpdate() {
-		this.$nuxt.$emit('update-locomotive')
-	},
+	// beforeUpdate() {
+	// 	this.$nuxt.$emit('update-locomotive')
+	// },
 
   mounted() {
 
@@ -160,57 +145,20 @@ export default {
 		}
 		this.onResize
 		window.addEventListener('resize', this.onResize)
-    // this.initObserver()
-    // this.observeSections()
+    this.initObserver()
+    this.observeSections()
     this.$root.$on('next-section', (index) => { this.goTo(index) })
 
+		// const locoScroll = this.$refs.scroller.locomotive
 
-		const locoScroll = this.$refs.scroller.locomotive
-
-		locoScroll.on('scroll', (obj) => {
-			// let currentElId = obj.currentElements[Object.keys(obj.currentElements)[0]].id
-			// let selectedIndex = currentElId.replace(/\D/g, "")
-			// this.selected = selectedIndex
-			
-			// console.log(this.$refs.scroller);
-			// ScrollTrigger.update();
-			// this.onScroll
-		});
+		// locoScroll.on('scroll', (obj) => {
+		// 	let currentElId = obj.currentElements[Object.keys(obj.currentElements)[0]].id
+		// 	let selectedIndex = currentElId.replace(/\D/g, "")
+		// 	this.selected = selectedIndex
+		// });
   },
 
   methods: {
-
-		onScroll() {
-			[...this.sections].forEach(section => {
-        var activeSection = section.id;
-        var menuitem = 'menu__'.concat(activeSection);
-        var menulink = document.getElementById(menuitem).querySelector('.sectionLink');
-        var menupointer = document.getElementById(menuitem).querySelector('.pointer');
-        // ----create a new timeline
-				var tl = gsap.timeline({
-				id: "Nav Animation",
-				defaults:{duration:0.5},
-				scrollTrigger: {
-						trigger: section,
-						start: "top 80%",
-						end: "+5px",
-						toggleActions: "play reverse play reverse",
-					}
-        });
-        tl.to(menulink, {duration:0.5, scale:"1.5"},">");
-        tl.to(menupointer, {duration:0.5, autoAlpha:1, width:"15"},"<");
-        return tl;
-
-    	}); //End forEach section loop
-		},
-		// onScroll() {
-		// 	[...this.sections].forEach(section => {
-		// 		const selected = [...this.sections].indexOf(section)
-		// 		if (section.hasAttribute('data-scroll-section-inview')) {
-		// 			console.log(selected);
-		// 		}
-		// 	});
-		// },
 
 		onResize() {
 			var mql = window.matchMedia('(min-width: 990px)');
@@ -218,13 +166,8 @@ export default {
 		},
 
     goTo(index) {
-      // if (this.selected == index) {
-      //   return
-      // }
       const newSection = this.sections[index]
-      // newSection.scrollIntoView()
 			this.$refs.scroller.locomotive.scrollTo(newSection)
-			// console.log(this.$refs.scroller);
     },
 
     observeSections() {

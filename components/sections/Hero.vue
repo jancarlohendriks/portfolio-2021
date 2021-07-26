@@ -47,10 +47,10 @@ export default {
       required: true,
     },
   },
-	mounted() {
+	// mounted() {
 		// this.$nextTick(() => {
-			this.$nuxt.$emit('update-locomotive')
+			// this.$nuxt.$emit('update-locomotive')
 		// })
-	},
+	// },
 }
 </script>
