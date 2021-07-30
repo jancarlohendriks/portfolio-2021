@@ -43,15 +43,15 @@
         </div>
       </div>
     </div>
-    <PageCursor />
+    <!-- <PageCursor /> -->
   </article>
 </template>
 <script>
-import PageCursor from '~/components/PageCursor.vue'
+// import PageCursor from '~/components/PageCursor.vue'
 export default {
   transition: 'fade',
   components: {
-    PageCursor,
+    // PageCursor,
   },
   async asyncData({ $content, params }) {
     const project = await $content('projects', params.slug).fetch()
