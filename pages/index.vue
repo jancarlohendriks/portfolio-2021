@@ -31,8 +31,7 @@
 			<nav
 				ref="nav"
 				class="sections-nav-container"
-				@mouseenter="$root.$emit('anchor-hover')"
-				@mouseleave="$root.$emit('anchor-hover')"
+				data-cursor-hover
 			>
 				<ul id="sections-nav" class="nav sections-nav sections-nav-animated">
 					<li
@@ -82,6 +81,9 @@
 				</div>
 			</main>
 			<!-- <PageCursor /> -->
+			<!-- <CursorFx config="cursorOptions" /> -->
+			<!-- <CursorFx config="cursorOptions" hide-inside="true" outside-size="10rem" delay="120" /> -->
+			<CursorFx :config="cursorOptions" :hide-inside="true" delay="120" />
 		</LocomotiveScroll>
 	</div>
 </template>
@@ -89,13 +91,15 @@
 <script>
 import LocomotiveScroll from '~/LocomotiveScroll/component/index.vue'
 import Section from '~/components/Section.vue'
-import PageCursor from '~/components/PageCursor.vue'
+import CursorFx from '~/components/CursorFx.vue'
+// import PageCursor from '~/components/PageCursor.vue'
 
 export default {
   components: {
 		LocomotiveScroll,
     Section,
-		PageCursor
+		CursorFx
+		// PageCursor
   },
 
   data() {
@@ -104,6 +108,19 @@ export default {
       observer: null,
 			selected: 0,
 			isMobile: true,
+			cursorOptions: {
+				lerps: {
+					dot: 1,
+					circle: 0.18,
+					custom: 0.23,
+				},
+				scale: {
+					ratio: 0.18,
+					min: .2,
+					max: 6,
+				},
+				opacity: 0.1,
+			},
 			scrollOptions: {
 				smooth: true,
 				direction: 'vertical',

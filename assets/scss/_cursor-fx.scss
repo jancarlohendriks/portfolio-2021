@@ -1,0 +1,82 @@
+// GLOBAL
+.cursor-fx {
+	opacity: 0;
+}
+
+.is-cursor-fx-active {
+	// &,
+	// * {
+	// 	cursor: none;
+	// }
+
+	.cursor-fx {
+		transition-delay: 0.3s;
+
+		&.cursor-fx--loaded {
+			opacity: 1;
+		}
+	}
+}
+
+// STYLE
+.cursor-fx {
+	$prefix: &;
+	$color: #333;
+
+	color: #{$color};
+	color: var(--color, #{$color});
+	// transition: color 0.18s ease-in-out, opacity 0.6s ease-in-out;
+	transition: all 0.6s ease-in-out;
+
+	&--hover {
+		color: #{$color};
+		color: var(--color-hover, #{$color});
+	}
+
+	&__inner {
+		position: absolute;
+
+		top: 0;
+		left: 0;
+		z-index: 9999 !important;
+		border-radius: 100%;
+		transition-timing-function: ease;
+		transition-duration: 0.23s;
+		transition-property: color, width, height, background-color, border-radius, border-color;
+		pointer-events: none;
+
+		will-change: auto;
+
+		&__outside {
+			border: 1px solid;
+			border-color: currentColor;
+		}
+
+		&__outside,
+		&__custom {
+			width: 64px;
+
+			height: 64px;
+		}
+
+		&__inside {
+			width: 6px;
+			height: 6px;
+			background-color: currentColor;
+		}
+	}
+
+	&--shape {
+		&-square {
+			> #{$prefix}__inner {
+				border-radius: 0;
+			}
+		}
+	}
+}
+
+.cursor-fx__inner__outside {
+	border: 0;
+	background-color: rgb(0 0 0 / 0%);
+	backdrop-filter: invert(1);
+}

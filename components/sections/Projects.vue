@@ -8,8 +8,7 @@
         v-for="(project, index) in projects"
         :key="index"
         class="col-12 col-md-4"
-				@mouseenter="$root.$emit('anchor-hover')"
-				@mouseleave="$root.$emit('anchor-hover')"
+				data-cursor-hover
       >
 				<nuxt-link class="card" :to="'/' + project.slug" :id="'fixed-target-' + index">
 				<!-- data-scroll

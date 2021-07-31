@@ -9,8 +9,7 @@
 				src="assets/img/avatar.png"
 				alt="Avatar"
 				class="jumbotron-img"
-				@mouseenter="$root.$emit('anchor-hover')"
-				@mouseleave="$root.$emit('anchor-hover')"
+				data-cursor-hover
 			/>
 		</div>
     <h1

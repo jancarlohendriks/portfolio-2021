@@ -9,4 +9,4 @@ Currently I am deepening my knowlegde into the IT world at Fontys University of 
 
 Passionated about solving problems and creating unique digital experiences.
 
-Do we share interests? Drop me a line! 👉
+Do we share interests? <a target="_blank" href="mailto:jancarlohendriks@hotmail.com">Drop me a line!</a>

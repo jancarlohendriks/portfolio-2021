@@ -24,8 +24,7 @@
               </div>
               <a target="_blank" :href="project.url"
                 class="col-12 col-lg-6"
-                @mouseenter="$root.$emit('anchor-hover')"
-                @mouseleave="$root.$emit('anchor-hover')"
+                data-cursor-hover
               >
                 <img
                   class="img-fluid mb-10"
@@ -43,14 +42,34 @@
         </div>
       </div>
     </div>
+		<CursorFx :config="cursorOptions" :hide-inside="true" delay="120" />
     <!-- <PageCursor /> -->
   </article>
 </template>
 <script>
 // import PageCursor from '~/components/PageCursor.vue'
+import CursorFx from '~/components/CursorFx.vue'
 export default {
+	data() {
+		return {
+			cursorOptions: {
+				lerps: {
+					dot: 1,
+					circle: 0.18,
+					custom: 0.23,
+				},
+				scale: {
+					ratio: 0.18,
+					min: .2,
+					max: 6,
+				},
+				opacity: 0.1,
+			},
+		}
+	},
   transition: 'fade',
   components: {
+		CursorFx
     // PageCursor,
   },
   async asyncData({ $content, params }) {
