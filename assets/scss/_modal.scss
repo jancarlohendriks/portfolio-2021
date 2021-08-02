@@ -41,6 +41,12 @@
 	transform: rotate(45deg) translateY(calc(-50% - 3px));
 }
 
+.copy {
+	color: $color-secondary;
+	font-size: .85rem;
+	margin-top: 2rem;
+}
+
 .modal-link {
 	position: relative;
 	display: inline-flex;

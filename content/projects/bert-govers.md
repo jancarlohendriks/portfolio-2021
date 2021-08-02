@@ -12,3 +12,7 @@ He has been awarded for his designs with
 - Reddot Design Award
 - Design Preis Deutschland
 - iF Design Award
+
+
+
+<span class="copy">&copy; Intelectual property of Unfolded Web Agency</span>

@@ -8,3 +8,5 @@ url: https://www.schommelaantafel.nl/
 ### Office Swing Set Tables
 
 Where workers can change gears to a more enjoyable lunch with their colleagues.
+
+<span class="copy">&copy; Intelectual property of Unfolded Web Agency.</span>
