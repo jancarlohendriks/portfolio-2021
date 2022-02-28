@@ -8,5 +8,3 @@ Previously graduated from a 4 year studies in Media and Interaction Design, and 
 Currently I am deepening my knowlegde into the IT world at Fontys University of Applied sciences.
 
 Passionated about solving problems and creating unique digital experiences.
-
-Do we share interests? <a target="_blank" href="mailto:jancarlohendriks@hotmail.com">Drop me a line!</a>
