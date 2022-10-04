@@ -37,7 +37,20 @@
 				"fileName": "References",
 				"navName": "Skills",
 				"title": "Skills",
-				"skills": ["adobe-full", "figma-full", "triad-hor", "nodejs", "nuxt-full", "laravel-full", "wordpress-full", "woocommerce", "vue", "sass", "git"]
+				"skills": [
+					"adobe-full",
+					"figma-full",
+					"triad-hor",
+					"nodejs",
+					"react-full",
+					"nextjs",
+					"vue",
+					"nuxt-full",
+					"sass",
+					"laravel-full",
+					"wordpress-full",
+					"woocommerce"
+				]
 			},
 			{
 				"id": 4,
