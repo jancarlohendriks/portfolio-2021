@@ -1,91 +1,91 @@
 <template>
-	<div
-		class="page-body with-header"
-		:class="{ 'sections-nav-in': menuOpen }"
-	>
-		<div class="page-bg"></div>
-		<LocomotiveScroll ref="scroller" :getted-options="scrollOptions">
-			<header class="header">
-				<div
-					class="
-						container-fluid-limited
-						d-flex
-						align-items-center
-						justify-content-between
-					"
-				>
-					<span></span>
-					<button
-						@click="menuOpen = !menuOpen"
-						class="sections-nav-toggler"
-						aria-label="Toggle navigation"
-					>
-						<span class="sections-nav-toggler-bar"></span>
-						<span class="sections-nav-toggler-bar"></span>
-						<span class="sections-nav-toggler-bar"></span>
-						<span class="sections-nav-toggler-bar"></span>
-					</button>
-				</div>
-			</header>
+  <div class="page-body with-header" :class="{ 'sections-nav-in': menuOpen }">
+    <div class="page-bg"></div>
+    <div>
+      <header class="header">
+        <div
+          class="
+            container-fluid-limited
+            d-flex
+            align-items-center
+            justify-content-between
+          "
+        >
+          <span></span>
+          <button
+            @click="menuOpen = !menuOpen"
+            class="sections-nav-toggler"
+            aria-label="Toggle navigation"
+          >
+            <span class="sections-nav-toggler-bar"></span>
+            <span class="sections-nav-toggler-bar"></span>
+            <span class="sections-nav-toggler-bar"></span>
+            <span class="sections-nav-toggler-bar"></span>
+          </button>
+        </div>
+      </header>
 
-			<nav
-				ref="nav"
-				class="sections-nav-container"
-				data-cursor-hover
-			>
-				<ul id="sections-nav" class="nav sections-nav sections-nav-animated">
-					<li
-						v-for="(section, index) in content.sections"
-						:key="index"
-						class="sections-nav-item"
-					>
-						<a
-							:href="'#' + section.navName"
-							class="nav-link sections-nav-link goto-section"
-							:class="{ active: index == selected }"
-							@click="menuOpen = false"
-						>
-							<span class="sections-nav-counter">{{ '0' + (index + 1) }}</span>
-							{{ section.navName }}
-						</a>
-					</li>
-					<li class="sections-nav-item">
-						<div class="sections-nav-info">
-							<a v-for="(info, index) in content.personal"
-							:key="index"
-							target="_blank"
-							:href="(info.key ? `${info.key}` : '') + `${info.value}`">
-								{{ info.placeholder }}
-							<br v-if="index < content.personal.length - 1" />
-							</a>
-						</div>
-					</li>
-				</ul>
-			</nav>
+      <nav ref="nav" class="sections-nav-container" data-cursor-hover>
+        <ul id="sections-nav" class="nav sections-nav sections-nav-animated">
+          <li
+            v-for="(section, index) in content.sections"
+            :key="index"
+            class="sections-nav-item"
+          >
+            <a
+              :href="'#' + section.navName"
+              class="nav-link sections-nav-link goto-section"
+              :class="{ active: index == selected }"
+              @click="menuOpen = false"
+            >
+              <span class="sections-nav-counter">{{ '0' + (index + 1) }}</span>
+              {{ section.navName }}
+            </a>
+          </li>
+          <li class="sections-nav-item">
+            <div class="sections-nav-info">
+              <a
+                v-for="(info, index) in content.personal"
+                :key="index"
+                target="_blank"
+                :href="(info.key ? `${info.key}` : '') + `${info.value}`"
+              >
+                {{ info.placeholder }}
+                <br v-if="index < content.personal.length - 1" />
+              </a>
+            </div>
+          </li>
+        </ul>
+      </nav>
 
-			<main class="content">
-				<div class="container-fluid-limited">
-					<div class="row">
-						<div id="sections" ref="sections" class="col col-xl-9" data-scroll-container>
-							<Section
-								v-for="(section, index) in content.sections"
-								:key="index"
-								:section="section"
-								:count="{
-									index: index,
-									total: content.sections.length,
-								}"
-							/>
-						</div>
-					</div>
-				</div>
-			</main>
-			<!-- <PageCursor /> -->
-			<!-- <CursorFx config="cursorOptions" /> -->
-			<!-- <CursorFx config="cursorOptions" hide-inside="true" outside-size="10rem" delay="120" /> -->
-			<CursorFx :config="cursorOptions" :hide-inside="true" delay="120" />
-		</LocomotiveScroll>
-	</div>
+      <main class="content">
+        <div class="container-fluid-limited">
+          <div class="row">
+            <div
+              id="sections"
+              ref="sections"
+              class="col col-xl-9"
+              data-scroll-container
+            >
+              <Section
+                v-for="(section, index) in content.sections"
+                :key="index"
+                :section="section"
+                :count="{
+                  index: index,
+                  total: content.sections.length,
+                }"
+              />
+            </div>
+          </div>
+        </div>
+      </main>
+      <!-- <PageCursor /> -->
+      <!-- <CursorFx config="cursorOptions" /> -->
+      <!-- <CursorFx config="cursorOptions" hide-inside="true" outside-size="10rem" delay="120" /> -->
+      <CursorFx :config="cursorOptions" :hide-inside="true" delay="120" />
+    </div>
+  </div>
 </template>
 
 <script>
@@ -96,44 +96,44 @@ import CursorFx from '~/components/CursorFx.vue'
 
 export default {
   components: {
-		LocomotiveScroll,
+    LocomotiveScroll,
     Section,
-		CursorFx
-		// PageCursor
+    CursorFx,
+    // PageCursor
   },
 
   data() {
     return {
       menuOpen: false,
       observer: null,
-			selected: 0,
-			isMobile: true,
-			cursorOptions: {
-				lerps: {
-					dot: 1,
-					circle: 0.18,
-					custom: 0.23,
-				},
-				scale: {
-					ratio: 0.18,
-					min: .2,
-					max: 6,
-				},
-				opacity: 0.1,
-			},
-			scrollOptions: {
-				smooth: true,
-				direction: 'vertical',
-				lerp: 0.065,
-				smartphone: {
-					smooth: false
-				},
-				tablet: {
-					smooth: true,
-					direction: 'vertical',
-					lerp: 1,
-				},
-			}
+      selected: 0,
+      isMobile: true,
+      cursorOptions: {
+        lerps: {
+          dot: 1,
+          circle: 0.18,
+          custom: 0.23,
+        },
+        scale: {
+          ratio: 0.18,
+          min: 0.2,
+          max: 6,
+        },
+        opacity: 0.1,
+      },
+      scrollOptions: {
+        smooth: true,
+        direction: 'vertical',
+        lerp: 0.065,
+        smartphone: {
+          smooth: false,
+        },
+        tablet: {
+          smooth: true,
+          direction: 'vertical',
+          lerp: 1,
+        },
+      },
     }
   },
 
@@ -148,43 +148,43 @@ export default {
     },
   },
 
-	// beforeUpdate() {
-	// 	this.$nuxt.$emit('update-locomotive')
-	// },
+  // beforeUpdate() {
+  // 	this.$nuxt.$emit('update-locomotive')
+  // },
 
   mounted() {
+    const hash = location.hash
+    if (hash) {
+      const newSection = document.querySelector(hash)
+      // this.$refs.scroller.locomotive.scrollTo(newSection)
+      history.pushState('', document.title, window.location.pathname)
+    }
+    this.onResize
+    window.addEventListener('resize', this.onResize)
+    // this.initObserver()
+    // this.observeSections()
+    // this.$root.$on('next-section', (index) => {
+    //   this.goTo(index)
+    // })
 
-		const hash = location.hash
-		if(hash) {
-			const newSection = document.querySelector(hash)
-			this.$refs.scroller.locomotive.scrollTo(newSection)
-			history.pushState("", document.title, window.location.pathname)
-		}
-		this.onResize
-		window.addEventListener('resize', this.onResize)
-    this.initObserver()
-    this.observeSections()
-    this.$root.$on('next-section', (index) => { this.goTo(index) })
+    // const locoScroll = this.$refs.scroller.locomotive
 
-		// const locoScroll = this.$refs.scroller.locomotive
-
-		// locoScroll.on('scroll', (obj) => {
-		// 	let currentElId = obj.currentElements[Object.keys(obj.currentElements)[0]].id
-		// 	let selectedIndex = currentElId.replace(/\D/g, "")
-		// 	this.selected = selectedIndex
-		// });
+    // locoScroll.on('scroll', (obj) => {
+    // 	let currentElId = obj.currentElements[Object.keys(obj.currentElements)[0]].id
+    // 	let selectedIndex = currentElId.replace(/\D/g, "")
+    // 	this.selected = selectedIndex
+    // });
   },
 
   methods: {
-
-		onResize() {
-			var mql = window.matchMedia('(min-width: 990px)');
-			mql.matches ? this.isMobile = false : this.isMobile = true
-		},
+    onResize() {
+      var mql = window.matchMedia('(min-width: 990px)')
+      mql.matches ? (this.isMobile = false) : (this.isMobile = true)
+    },
 
     goTo(index) {
       const newSection = this.sections[index]
-			this.$refs.scroller.locomotive.scrollTo(newSection)
+      this.$refs.scroller.locomotive.scrollTo(newSection)
     },
 
     observeSections() {
@@ -199,14 +199,13 @@ export default {
         entries.filter((e) => {
           const selected = [...this.sections].indexOf(e.target)
           if (e.isIntersecting) {
-						this.selected = selected
+            this.selected = selected
             // e.target.classList.add('interaction-in')
-						// this.$nuxt.$emit('update-locomotive')
+            // this.$nuxt.$emit('update-locomotive')
           }
         })
       }, options)
     },
-
   },
 }
 </script>
